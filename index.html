@@ -570,11 +570,6 @@
             openWhatsAppUrl(message);
         }
 
-        function toggleSetupModal() {
-            const modal = document.getElementById('setup-modal');
-            modal.classList.toggle('hidden');
-        }
-
         // =====================================================================
         // HERO SLIDESHOW — JS-driven smooth crossfade
         // =====================================================================
@@ -614,6 +609,24 @@
             loadPackages();
             loadNewsTicker();
             startHeroSlideshow();
+
+            // Mobile menu toggle
+            const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            if (mobileMenuBtn && mobileMenu) {
+                mobileMenuBtn.addEventListener('click', () => {
+                    const isOpen = !mobileMenu.classList.contains('hidden');
+                    mobileMenu.classList.toggle('hidden');
+                    mobileMenuBtn.setAttribute('aria-expanded', String(!isOpen));
+                });
+                // Close menu when clicking a link
+                mobileMenu.querySelectorAll('.mobile-link').forEach(link => {
+                    link.addEventListener('click', () => {
+                        mobileMenu.classList.add('hidden');
+                        mobileMenuBtn.setAttribute('aria-expanded', 'false');
+                    });
+                });
+            }
         });
     </script>
 
@@ -1232,11 +1245,6 @@
 
             <div class="pt-8 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs text-cream-200/60">
                 <p>© 2026 মোবাশ্বিরাহ ট্রাভেলস্ এন্ড ট্যুরস। সর্বস্বত্ব সংরক্ষিত।</p>
-
-                <button onclick="toggleSetupModal()" class="inline-flex items-center gap-1.5 text-cream-200/60 hover:text-gold-500 transition-colors">
-                    <i data-lucide="settings" class="w-3.5 h-3.5"></i>
-                    Google Sheet সেটআপ গাইড
-                </button>
             </div>
         </div>
     </footer>
@@ -1246,32 +1254,6 @@
         <i data-lucide="message-circle" class="w-6 h-6"></i>
         <span class="hidden sm:inline text-sm font-semibold pr-1">হোয়াটসঅ্যাপ</span>
     </button>
-
-    <!-- Admin Setup Guide Modal -->
-    <div id="setup-modal" class="hidden fixed inset-0 z-50 bg-slate-900/70 backdrop-blur-sm flex items-center justify-center p-4">
-        <div class="bg-white rounded-2xl max-w-lg w-full p-6 sm:p-8 shadow-2xl border border-cream-200 relative">
-            <button onclick="toggleSetupModal()" class="absolute top-5 right-5 text-slate-400 hover:text-slate-700">
-                <i data-lucide="x" class="w-5 h-5"></i>
-            </button>
-            <div class="inline-flex items-center gap-2 text-emerald-850 bg-emerald-50 px-3 py-1 rounded-full text-xs font-semibold mb-3">
-                <i data-lucide="database" class="w-3.5 h-3.5"></i>
-                এজেন্সি অ্যাডমিন গাইড
-            </div>
-            <h3 class="text-xl font-bold text-emerald-950 mb-3">Google Sheets থেকে প্যাকেজ ও খবর আপডেট করার নিয়ম</h3>
-            <ol class="space-y-3 text-sm text-slate-600 list-decimal list-inside leading-relaxed">
-                <li><strong>প্যাকেজ শিট:</strong> আপনার Google Sheet-এ প্যাকেজের নাম, মেয়াদ, মূল্য, হোটেল ইত্যাদি তথ্য বাংলা হেডিং অনুযায়ী লিখুন।</li>
-                <li>শিটের উপরে <strong>File &gt; Share &gt; Publish to web</strong> অপশনে যান।</li>
-                <li><strong>Web page</strong>-এর বদলে <strong>Comma-separated values (.csv)</strong> সিলেক্ট করে <strong>Publish</strong> বাটনে ক্লিক করুন এবং লিংকটি কপি করুন।</li>
-                <li>এই HTML ফাইলে <code class="bg-cream-100 px-1.5 py-0.5 rounded text-emerald-900">packagesSheetCsvUrl: ""</code> বা <code class="bg-cream-100 px-1.5 py-0.5 rounded text-emerald-900">googleSheetCsvUrl: ""</code> এর ভেতর প্যাকেজ শিটের লিংকটি পেস্ট করুন।</li>
-                <li><strong>খবর টিক্কার শিট:</strong> অন্য একটি Google Sheet-এ খবর/শিরোনাম এবং অবস্থা (বন্ধ/সক্রিয়) কলাম রাখুন এবং একইভাবে Publish to web হিসেবে CSV লিংক নিন।</li>
-                <li>তার লিংকটি <code class="bg-cream-100 px-1.5 py-0.5 rounded text-emerald-900">tickerSheetCsvUrl: ""</code> এর ভেতর পেস্ট করুন। লিংক setzte দিলেই খবর টিক্কার অটো-আপডেট হবে।</li>
-                <li>সব লিংক সেভ করার পর পেজ রিফ্রেশ করুন—শিট থেকে সরাসরি ডাটা দেখাবে।</li>
-            </ol>
-            <div class="mt-6 flex justify-end">
-                <button onclick="toggleSetupModal()" class="bg-emerald-850 text-white px-5 py-2.5 rounded-xl text-sm font-semibold">বুঝেছি</button>
-            </div>
-        </div>
-    </div>
 
 </body>
 </html>
