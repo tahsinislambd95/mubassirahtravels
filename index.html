@@ -88,9 +88,23 @@
             animation-play-state: paused;
         }
 
-        /* Bangla digit styling - all digits use Bornomala font */
+        /* Local Bornomala font for Bangla digits */
+        @font-face {
+            font-family: 'BornomalaLocal';
+            font-style: normal;
+            font-weight: 400;
+            src: url('./Bornomala-Regular.ttf') format('truetype');
+        }
+        @font-face {
+            font-family: 'BornomalaLocal';
+            font-style: normal;
+            font-weight: 600;
+            src: url('./Bornomala-Bold.ttf') format('truetype');
+        }
+
+        /* Bangla digit styling - all digits use BornomalaLocal font */
         .bn-digit {
-            font-family: 'Bornomala', 'Noto Serif Bengali', serif !important;
+            font-family: 'BornomalaLocal', 'Bornomala', 'Noto Serif Bengali', serif !important;
             font-weight: 600;
             font-variant-numeric: normal;
             font-feature-settings: "lnum" 0;
