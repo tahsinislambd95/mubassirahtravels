@@ -74,9 +74,9 @@
             border-color: #C5A059;
         }
 
-        /* Hero Slideshow Auto-Crossfade — JS-driven smooth opacity transition */
+        /* Hero Slideshow Auto-Crossfade - JS driven, no CSS animations */
         .hero-slide {
-            transition: opacity 1100ms ease-in-out;
+            transition: opacity 1000ms ease-in-out;
         }
 
         /* News Ticker Marquee */
@@ -88,7 +88,7 @@
             animation-play-state: paused;
         }
 
-        /* Local Bornomala font for Bangla digits */
+        /* Bangla digit styling - all digits use BornomalaLocal font */
         @font-face {
             font-family: 'BornomalaLocal';
             font-style: normal;
@@ -102,7 +102,6 @@
             src: url('./Bornomala-Bold.ttf') format('truetype');
         }
 
-        /* Bangla digit styling - all digits use BornomalaLocal font */
         .bn-digit {
             font-family: 'BornomalaLocal', 'Bornomala', 'Noto Serif Bengali', serif !important;
             font-weight: 600;
@@ -158,9 +157,7 @@
             margin-left: 4px;
         }
         .media-nav-btn {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
+            position: relative;
             background: rgba(255, 255, 255, 0.9);
             border: none;
             width: 36px;
@@ -178,8 +175,11 @@
             background: #C5A059;
             color: #064E3B;
         }
-        .media-nav-btn.prev { left: 8px; }
-        .media-nav-btn.next { right: 8px; }
+        .media-nav-btn.prev,
+        .media-nav-btn.next {
+            left: auto;
+            right: auto;
+        }
         .media-nav-btn:disabled { opacity: 0.5; cursor: not-allowed; }
         .media-dot-indicators {
             display: flex;
@@ -210,13 +210,14 @@
             .media-photo-grid { grid-template-columns: repeat(4, 1fr); }
         }
         .media-photo-card {
-            position: relative;
+            flex-direction: column;
             border-radius: 10px;
             overflow: hidden;
             background: #ddd;
-            aspect-ratio: 4/3;
             cursor: pointer;
             transition: transform 0.2s ease;
+            display: flex;
+            flex-direction: column;
         }
         .media-photo-card:hover { transform: scale(1.03); }
         .media-photo-card img {
@@ -370,15 +371,16 @@
         }
         .reviews-slider-track {
             display: flex;
+            gap: 1.5rem;
             transition: transform 0.4s ease;
         }
         .reviews-slider-slide {
-            flex: 0 0 100%;
-            max-width: 100%;
+            flex: 0 0 calc(100% - 1.5rem);
+            max-width: calc(100% - 1.5rem);
         }
         @media (min-width: 768px) {
             .reviews-slider-track { transform: translateX(0); }
-            .reviews-slider-slide { flex: 0 0 33.333%; max-width: 33.333%; }
+            .reviews-slider-slide { flex: 0 0 calc(33.333% - 1rem); max-width: calc(33.333% - 1rem); }
         }
     </style>
 </head>
@@ -402,14 +404,13 @@
             reviewsSheetCsvUrl: "https://docs.google.com/spreadsheets/d/e/2PACX-1vT6pxyqQa-1wGt2MwcHGgpoiyTkyCsdhQaj37cep9WhLIfrdS2OvCqYB9hqiWceXVpUW9YUcxO8IVw2/pub?gid=377828727&single=true&output=csv"
         };
 
-        // Sample Packages (all digits stored as English; converted to Bangla by wrapBanglaDigits)
         const SAMPLE_PACKAGES = [
             {
                 category: "ওমরাহ",
-                badge: "ওমরাহ্‌ প্যাকেজ জনপ্রিয়",
+                badge: "ওমরাহ জনপ্রিয় প্যাকেজ",
                 title: "14 দিনের স্ট্যান্ডার্ড ওমরাহ প্যাকেজ",
                 duration: "১৪ দিন (মক্কা ৮ রাত, মদিনা ৫ রাত)",
-                price: "1,65,000",
+                price: "১,৬৫,০০০",
                 makkahHotel: "3 তারকা মানের হোটেল (ইব্রাহিম খলিল রোড)",
                 makkahDistance: "কাবা শরীফ থেকে 350 মিটার",
                 madinahHotel: "3 তারকা মানের হোটেল (মারকাজিয়া এলাকা)",
@@ -422,7 +423,7 @@
                 badge: "ওমরাহ প্যাকেজ সাশ্রয়ী",
                 title: "14 দিনের ইকোনমি ওমরাহ প্যাকেজ",
                 duration: "১৪ দিন (মক্কা ৮ রাত, মদিনা ৫ রাত)",
-                price: "1,35,000",
+                price: "১,৩৫,০০০",
                 makkahHotel: "স্ট্যান্ডার্ড হোটেল (মিসফালাহ / শাটল সুবিধা)",
                 makkahDistance: "কাবা শরীফ থেকে 750 মিটার",
                 madinahHotel: "স্ট্যান্ডার্ড হোটেল (সেন্ট্রাল এরিয়া)",
@@ -435,7 +436,7 @@
                 badge: "ওমরাহ প্রিমিয়াম 5-তারকা",
                 title: "21 দিনের ভিআইপি ওমরাহ প্যাকেজ",
                 duration: "২১ দিন (মক্কা ১২ রাত, মদিনা ৮ রাত)",
-                price: "2,25,000",
+                price: "২,২৫,০০০",
                 makkahHotel: "5 তারকা হোটেল (ক্লক টাওয়ার / জাবালে ওমর)",
                 makkahDistance: "কাবা শরীফ চত্বর সংলগ্ন (0-100 মিটার)",
                 madinahHotel: "5 তারকা হোটেল (নর্থ মারকাজিয়া)",
@@ -445,10 +446,10 @@
             },
             {
                 category: "হজ",
-                badge: "হজ আগাম নিবন্ধন চলছে",
+                badge: "হজ প্যাকেজ আগাম নিবন্ধন",
                 title: "পূর্ণাঙ্গ হজ প্যাকেজ (সরকারি ও বেসরকারি ব্যবস্থাপনা)",
                 duration: "৩৫ - ৪০ দিন",
-                price: "5,85,000",
+                price: "৫,৮৫,০০০",
                 makkahHotel: "মক্কায় মানসম্মত লিফটযুক্ত হোটেল (আজিজিয়া / হারাম সংলগ্ন)",
                 makkahDistance: "হারাম শরীফ থেকে 500-800 মিটার",
                 madinahHotel: "মদিনায় মারকাজিয়া এলাকার হোটেল",
@@ -458,21 +459,20 @@
             }
         ];
 
-        let allPackages = [];
         let currentFilterKey = 'all';
+        let allPackages = [];
 
-        // Convert English digits (0-9) to Bangla digits (০-৯)
         function toBanglaDigits(str) {
             const banglaDigits = ['০', '১', '২', '৩', '৪', '৫', '৬', '৭', '৮', '৯'];
             return str.replace(/\d/g, d => banglaDigits[parseInt(d)]);
         }
 
-        // Wrap Bangla digits in .bn-digit spans for Bornomala styling.
-        // Excludes phone/WhatsApp numbers (always English digits).
         function wrapBanglaDigits(node) {
             if (!node || node.nodeType !== Node.ELEMENT_NODE) return;
             if (node.tagName === 'SCRIPT' || node.tagName === 'STYLE') return;
             if (node.tagName === 'INPUT' || node.tagName === 'TEXTAREA' || node.tagName === 'SELECT') return;
+            if (/(\+880\s?\d{3}-\d{6}|\+\d{10,})/.test(node.textContent)) return;
+            if (!/[\d\u09E6-\u09EF]/.test(node.textContent)) return;
 
             const walker = document.createTreeWalker(node, NodeFilter.SHOW_TEXT, null, false);
             const textNodes = [];
@@ -483,21 +483,16 @@
 
             textNodes.forEach(textNode => {
                 const text = textNode.textContent;
-
-                // Skip phone/WhatsApp numbers entirely — keep as plain English digits (0-9)
                 if (/(\+880\s?\d{3}-\d{6}|\+\d{10,})/.test(text)) return;
-
-                // Detect any digit: English (0-9) or Bangla (০-৯)
                 if (!/[\d\u09E6-\u09EF]/.test(text)) return;
 
                 const parent = textNode.parentNode;
                 const fragment = document.createDocumentFragment();
                 let lastIndex = 0;
-
-                const digitRegex = /[\d\u09E6-\u09EF]+/g;
+                const regex = /[\d\u09E6-\u09EF]+/g;
                 let match;
 
-                while ((match = digitRegex.exec(text)) !== null) {
+                while ((match = regex.exec(text)) !== null) {
                     if (match.index > lastIndex) {
                         fragment.appendChild(document.createTextNode(text.slice(lastIndex, match.index)));
                     }
@@ -505,7 +500,7 @@
                     span.className = 'bn-digit';
                     span.textContent = toBanglaDigits(match[0]);
                     fragment.appendChild(span);
-                    lastIndex = digitRegex.lastIndex;
+                    lastIndex = regex.lastIndex;
                 }
 
                 if (lastIndex < text.length) {
@@ -555,7 +550,6 @@
 
         async function loadPackages() {
             const statusText = document.getElementById('sheet-status-text');
-
             const sheetUrl = AGENCY_CONFIG.packagesSheetCsvUrl || AGENCY_CONFIG.googleSheetCsvUrl;
 
             if (sheetUrl && sheetUrl.trim() !== "") {
@@ -572,20 +566,18 @@
                         for (let i = 1; i < rows.length; i++) {
                             const row = rows[i];
                             const getCol = (keywords) => {
-                                const idx = headers.findIndex(h => keywords.some(k => h.includes(k)));
-                                return idx !== -1 && row[idx] ? row[idx] : '';
+                                const idx = headers.findIndex(h => keywords.some(k => h.trim().toLowerCase().includes(k.toLowerCase())));
+                                return idx !== -1 && row[idx] ? row[idx].trim() : '';
                             };
 
                             const status = getCol(['অবস্থা', 'স্ট্যাটাস', 'Status']);
-                            if (status && (status.includes('বন্ধ') || status.toLowerCase() === 'inactive')) {
-                                continue;
-                            }
+                            if (status && (status.includes('বন্ধ') || status.toLowerCase() === 'inactive')) continue;
 
                             parsedPackages.push({
                                 category: getCol(['ধরন', 'ক্যাটাগরি', 'Type']) || 'ওমরাহ',
                                 badge: getCol(['ব্যাজ', 'বিশেষত্ব', 'Badge']) || 'চলমান প্যাকেজ',
                                 title: getCol(['প্যাকেজের নাম', 'নাম', 'Title']) || 'ওমরাহ প্যাকেজ',
-                                duration: getCol(['মেয়াদ', 'দিন', 'Duration']) || '১৪ দিন (মক্কা ৮ রাত, মদিনা ৫ রাত)',
+                                duration: getCol(['মেয়াদ', 'দিন', 'Duration']) || '১৪ দিন',
                                 price: getCol(['মূল্য', 'টাকা', 'Price']) || 'আলোচনা সাপেক্ষে',
                                 makkahHotel: getCol(['মক্কার হোটেল', 'মক্কা হোটেল']) || 'মানসম্মত হোটেল',
                                 makkahDistance: getCol(['মক্কা দূরত্ব', 'কাবা থেকে দূরত্ব']) || 'হারাম শরীফের সন্নিকটে',
@@ -598,6 +590,7 @@
 
                         if (parsedPackages.length > 0) {
                             allPackages = parsedPackages;
+                            if (statusText) statusText.textContent = "লাইভ গুগল শিট থেকে আপডেটকৃত";
                             renderPackages();
                             return;
                         }
@@ -607,77 +600,15 @@
                 }
             }
 
-            allPackages = SAMPLE_PACKAGES;
-            renderPackages();
-        }
-
-        async function loadNewsTicker() {
-            const tickerWrap = document.querySelector('#news-ticker .ticker-wrap');
-            if (!tickerWrap) return;
-
-            const sheetUrl = AGENCY_CONFIG.tickerSheetCsvUrl;
-
-            if (sheetUrl && sheetUrl.trim() !== "") {
-                try {
-                    const response = await fetch(sheetUrl);
-                    const csvData = await response.text();
-                    const rows = parseCSV(csvData);
-
-                    if (rows.length > 1) {
-                        const headers = rows[0];
-                        const newsItems = [];
-
-                        for (let i = 1; i < rows.length; i++) {
-                            const row = rows[i];
-                            const getCol = (keywords) => {
-                                const idx = headers.findIndex(h => keywords.some(k => h.includes(k)));
-                                return idx !== -1 && row[idx] ? row[idx] : '';
-                            };
-
-                            const status = getCol(['অবস্থা', 'স্ট্যাটাস', 'Status']);
-                            if (status && (status.includes('বন্ধ') || status.toLowerCase() === 'inactive')) {
-                                continue;
-                            }
-
-                            const newsText = getCol(['খবর', 'নিউস', 'News', 'শিরোনাম', 'Title']);
-                            if (newsText) {
-                                newsItems.push(newsText);
-                            }
+allPackages = SAMPLE_PACKAGES;
+                            const statusEl = document.getElementById('sheet-status-text');
+                            if (statusEl) statusEl.classList.add('hidden');
+                            renderPackages();
                         }
 
-                        if (newsItems.length > 0) {
-                            // Build ticker with bullet separators and duplicate for seamless loop
-                            const separator = ' <span class="text-xs font-medium text-emerald-900 mr-6">•</span> ';
-                            const label = '<span class="text-xs font-medium text-emerald-900 mr-6">সর্বশেষ খবর</span>';
-                            const itemsHtml = newsItems.map(item => `<span class="text-sm text-slate-600 mr-3">${item} → </span>`).join(separator);
-                            const fullHtml = label + itemsHtml + separator + label + itemsHtml + separator;
-                            tickerWrap.innerHTML = fullHtml;
-
-                            // Apply Bangla digit styling
-                            wrapBanglaDigits(tickerWrap);
-
-                            // Re-init Lucide icons
-                            lucide.createIcons();
-                            return;
-                        }
-                    }
-                } catch (error) {
-                    console.error("News ticker Google Sheet load error:", error);
-                }
-            }
-
-            // Fallback: keep existing default ticker content (already in HTML)
-            wrapBanglaDigits(tickerWrap);
-            lucide.createIcons();
-        }
-
-// Normalize Bangla/Unicode text for safe comparison (removes zero-width chars, collapses whitespace)
         function normalizeText(text) {
             if (!text) return '';
-            return String(text)
-                .replace(/[\u200c\u200d\u200b]/g, '')
-                .replace(/\s+/g, ' ')
-                .trim();
+            return String(text).replace(/[\u200c\u200d\u200b]/g, '').replace(/\s+/g, ' ').trim();
         }
 
         function isUmrahText(text) {
@@ -719,7 +650,6 @@
 
         function renderPackages() {
             const grid = document.getElementById('packages-grid');
-
             const filterLabel = currentFilterKey === 'all'
                 ? "সব প্যাকেজ"
                 : currentFilterKey === 'umrah'
@@ -843,66 +773,15 @@
             openWhatsAppUrl(message);
         }
 
-        // =====================================================================
-        // HERO SLIDESHOW — JS-driven smooth crossfade
-        // =====================================================================
-        let currentHeroSlide = 0;
-        const HERO_INTERVAL = 4500;
-
-        function getHeroSlides() {
-            return document.querySelectorAll('.hero-slide');
-        }
-
-        function nextHeroSlide() {
-            const slides = getHeroSlides();
-            if (slides.length === 0) return;
-            const prev = slides[currentHeroSlide];
-            currentHeroSlide = (currentHeroSlide + 1) % slides.length;
-            const next = slides[currentHeroSlide];
-
-            prev.classList.remove('opacity-100');
-            prev.classList.add('opacity-0');
-            next.classList.remove('opacity-0');
-            next.classList.add('opacity-100');
-        }
-
-        function startHeroSlideshow() {
-            setInterval(nextHeroSlide, HERO_INTERVAL);
-        }
-
-        // =====================================================================
-        // YOUTUBE ID EXTRACTION
-        // =====================================================================
-        function extractYouTubeId(url) {
-            if (!url) return null;
-            const patterns = [
-                /(?:youtube\.com\/watch\?v=)([^&\n?#]+)/,
-                /(?:youtu\.be\/)([^&\n?#]+)/,
-                /(?:youtube\.com\/shorts\/)([^&\n?#]+)/,
-                /(?:youtube\.com\/embed\/)([^&\n?#]+)/
-            ];
-            for (const p of patterns) {
-                const m = url.match(p);
-                if (m) return m[1];
-            }
-            return null;
-        }
-
-        // =====================================================================
-        // VIDEO GALLERY
-        // =====================================================================
-        let videos = [];
-        let currentVideoIndex = 0;
-
         async function loadVideos() {
             const sheetUrl = AGENCY_CONFIG.videosSheetCsvUrl;
             const container = document.getElementById('video-grid');
             if (!container) return;
 
             const fallbackVideos = [
-                { title: "ওমরাহ কাফেলার বিদায়", description: "মক্কায় কাবা শরীফের সামনে আমাদের কাফেলার একtyabrীয় দৃশ্য", link: "https://www.youtube.com/watch?v=dQw4w9WgXcQ" },
+                { title: "ওমরাহ কাফেলার বিদায়", description: "মক্কায় কাবা শরীফের সামনে আমাদের কাফেলার অক্টোবরীয় দৃশ্য", link: "https://www.youtube.com/watch?v=dQw4w9WgXcQ" },
                 { title: "মদিনায় রওজা শরীফ জিয়ারাত", description: "মসজিদে নববীর পবিত্র রওজা শরীফে জিয়ারাতের সুন্দর মুহূর্ত", link: "https://www.youtube.com/watch?v=dQw4w9WgXcQ" },
-                { title: "হজ কাফেলার минার একত্রে", description: "মিনায় হাজীদের একত্রে préfet namaazের সুন্দর দৃশ্য", link: "https://www.youtube.com/watch?v=dQw4w9WgXcQ" }
+                { title: "মিনা প্রান্তরে হজ কাফেলা", description: "মিনায় হাজীদের একত্রে নামাজের সুন্দর দৃশ্য", link: "https://www.youtube.com/watch?v=dQw4w9WgXcQ" }
             ];
 
             if (sheetUrl && sheetUrl.trim() !== "") {
@@ -918,8 +797,8 @@
                         for (let i = 1; i < rows.length; i++) {
                             const row = rows[i];
                             const getCol = (keywords) => {
-                                const idx = headers.findIndex(h => keywords.some(k => h.includes(k)));
-                                return idx !== -1 && row[idx] ? row[idx] : '';
+                                const idx = headers.findIndex(h => keywords.some(k => h.trim().toLowerCase().includes(k.toLowerCase())));
+                                return idx !== -1 && row[idx] ? row[idx].trim() : '';
                             };
 
                             const status = getCol(['অবস্থা', 'স্ট্যাটাস', 'Status']);
@@ -930,12 +809,12 @@
                             const link = getCol(['লিংক', 'Link', 'URL', 'ইউআরএল']);
 
                             if (title || link) {
-                                parsed.push({ title: title || 'বideo', description: desc || '', link: link || '' });
+                                parsed.push({ title: title || 'ভিডিও', description: desc || '', link: link || '' });
                             }
                         }
 
                         if (parsed.length > 0) {
-                            videos = parsed;
+                            allVideos = parsed;
                             currentVideoIndex = 0;
                             renderVideos();
                             return;
@@ -946,10 +825,13 @@
                 }
             }
 
-            videos = fallbackVideos;
+            allVideos = fallbackVideos;
             currentVideoIndex = 0;
             renderVideos();
         }
+
+        let allVideos = [];
+        let currentVideoIndex = 0;
 
         function renderVideos() {
             const container = document.getElementById('video-grid');
@@ -958,18 +840,18 @@
             if (!container) return;
 
             const showCount = window.innerWidth < 768 ? 1 : 3;
-            const maxStart = Math.max(0, videos.length - showCount);
+            const maxStart = Math.max(0, allVideos.length - showCount);
             currentVideoIndex = Math.min(currentVideoIndex, maxStart);
 
-            const visible = videos.slice(currentVideoIndex, currentVideoIndex + showCount);
+            const visible = allVideos.slice(currentVideoIndex, currentVideoIndex + showCount);
 
             container.innerHTML = visible.map(v => {
                 const ytId = extractYouTubeId(v.link);
-                const thumb = ytId ? `https://img.youtube.com/vi/${ytId}/hqdefault.jpg` : 'https://placehold.co/400x225/064E3B/C5A059?text=Video';
+                const thumb = ytId ? `https://img.youtube.com/vi/${ytId}/hqdefault.jpg` : 'https://placehold.co/400x225/064E3B/C5A059?text=ভিডিও';
                 return `
                 <article class="media-video-card bg-white rounded-2xl border border-cream-200 overflow-hidden card-hover" onclick="openVideoModal('${ytId || ''}')">
                     <div class="media-video-thumbnail">
-                        <img src="${thumb}" alt="${v.title}" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/400x225/064E3B/C5A059?text=Video'">
+                        <img src="${thumb}" alt="${v.title}" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/400x225/064E3B/C5A059?text=ভিডিও'">
                         <div class="media-video-play-overlay">
                             <div class="media-video-play-btn"></div>
                         </div>
@@ -982,22 +864,46 @@
                 `;
             }).join('');
 
-            // Navigation buttons
             if (prevBtn && nextBtn) {
                 prevBtn.disabled = currentVideoIndex <= 0;
                 nextBtn.disabled = currentVideoIndex >= maxStart;
                 prevBtn.onclick = () => { if (currentVideoIndex > 0) { currentVideoIndex -= showCount; renderVideos(); } };
                 nextBtn.onclick = () => { if (currentVideoIndex < maxStart) { currentVideoIndex += showCount; renderVideos(); } };
             }
+
+            wrapBanglaDigits(container);
+            lucide.createIcons();
+        }
+
+        function extractYouTubeId(url) {
+            if (!url) return null;
+            // Handle iframe src attribute: <iframe src="https://www.youtube.com/embed/VIDEO_ID?...">
+            const iframeMatch = url.match(/src="([^"]+)"/);
+            if (iframeMatch) url = iframeMatch[1];
+            const patterns = [
+                /(?:youtube\.com\/watch\?v=)([^&\n?#]+)/,
+                /(?:youtu\.be\/)([^&\n?#]+)/,
+                /(?:youtube\.com\/shorts\/)([^&\n?#]+)/,
+                /(?:youtube\.com\/embed\/)([^&\n?#]+)/
+            ];
+            for (const p of patterns) {
+                const m = url.match(p);
+                if (m) return m[1];
+            }
+            return null;
         }
 
         function openVideoModal(videoId) {
             if (!videoId) return;
             const modal = document.getElementById('video-modal');
             const iframe = document.getElementById('video-modal-iframe');
+            const directLink = document.getElementById('video-modal-direct-link');
             if (modal && iframe) {
-                iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
+                iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0`;
                 modal.classList.add('open');
+            }
+            if (directLink && videoId) {
+                directLink.href = `https://www.youtube.com/watch?v=${videoId}`;
             }
         }
 
@@ -1009,12 +915,6 @@
                 iframe.src = '';
             }
         }
-
-        // =====================================================================
-        // PHOTO GALLERY
-        // =====================================================================
-        let galleryPhotos = [];
-        let galleryShowing = 6;
 
         async function loadGallery() {
             const sheetUrl = AGENCY_CONFIG.gallerySheetCsvUrl;
@@ -1041,21 +941,21 @@
                         for (let i = 1; i < rows.length; i++) {
                             const row = rows[i];
                             const getCol = (keywords) => {
-                                const idx = headers.findIndex(h => keywords.some(k => h.includes(k)));
-                                return idx !== -1 && row[idx] ? row[idx] : '';
+                                const idx = headers.findIndex(h => keywords.some(k => h.trim().toLowerCase().includes(k.toLowerCase())));
+                                return idx !== -1 && row[idx] ? row[idx].trim() : '';
                             };
 
                             const status = getCol(['অবস্থা', 'স্ট্যাটাস', 'Status']);
                             if (status && (status.includes('বন্ধ') || status.toLowerCase() === 'inactive')) continue;
 
                             const image = getCol(['ছবি', 'Image', 'ফটো']);
-                            const caption = getCol(['ক্যাপশন', 'Caption', 'ত svjetbir birton']);
+                            const caption = getCol(['ক্যাপশন', 'Caption', 'বর্ণনা']);
 
                             if (image) parsed.push({ image, caption: caption || '' });
                         }
 
                         if (parsed.length > 0) {
-                            galleryPhotos = parsed;
+                            allGalleryPhotos = parsed;
                             galleryShowing = 6;
                             renderGallery();
                             return;
@@ -1066,38 +966,44 @@
                 }
             }
 
-            galleryPhotos = fallbackPhotos;
+            allGalleryPhotos = fallbackPhotos;
             galleryShowing = 6;
             renderGallery();
         }
+
+        let allGalleryPhotos = [];
+        let galleryShowing = 6;
 
         function renderGallery() {
             const container = document.getElementById('photo-grid');
             const showMoreBtn = document.getElementById('photo-show-more');
             if (!container) return;
 
-            const showCount = Math.min(galleryShowing, galleryPhotos.length);
-            const visible = galleryPhotos.slice(0, showCount);
+            const showCount = Math.min(galleryShowing, allGalleryPhotos.length);
+            const visible = allGalleryPhotos.slice(0, showCount);
 
             container.innerHTML = visible.map((p, i) => {
                 const src = p.image.startsWith('http') ? p.image : p.image;
                 return `
-                <div class="media-photo-card" onclick="openLightbox(${i})">
-                    <img src="${src}" alt="${p.caption}" onerror="this.src='https://placehold.co/400x300/064E3B/C5A059?text=Image'">
-                    <div class="media-photo-caption-overlay">
-                        <span>${p.caption || 'ছবি'}</span>
+                <div class="media-photo-card flex flex-col" onclick="openLightbox(${i})">
+                    <div class="relative aspect-[4/3] overflow-hidden rounded-t-2xl bg-cream-200 cursor-pointer">
+                        <img src="${src}" alt="${p.caption}" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/400x300/064E3B/C5A059?text=ছবি'">
+                        <div class="media-photo-caption-overlay">
+                            <span>${p.caption || 'ছবি'}</span>
+                        </div>
                     </div>
+                    <p class="text-sm text-slate-600 text-center pt-2 px-2">${p.caption || 'ছবি'}</p>
                 </div>
                 `;
             }).join('');
 
             if (showMoreBtn) {
-                if (galleryPhotos.length > galleryShowing) {
+                if (allGalleryPhotos.length > galleryShowing) {
                     showMoreBtn.classList.remove('hidden');
-                    showMoreBtn.textContent = galleryShowing < galleryPhotos.length ? 'আরও ছবি দেখুন' : 'কম দেখুন';
+                    showMoreBtn.textContent = galleryShowing < allGalleryPhotos.length ? 'আরও ছবি দেখুন' : 'কম দেখুন';
                     showMoreBtn.onclick = () => {
-                        if (galleryShowing < galleryPhotos.length) {
-                            galleryShowing = Math.min(galleryShowing + 6, galleryPhotos.length);
+                        if (galleryShowing < allGalleryPhotos.length) {
+                            galleryShowing = Math.min(galleryShowing + 6, allGalleryPhotos.length);
                         } else {
                             galleryShowing = 6;
                         }
@@ -1107,16 +1013,16 @@
                     showMoreBtn.classList.add('hidden');
                 }
             }
+
+            wrapBanglaDigits(container);
+            lucide.createIcons();
         }
 
-        // =====================================================================
-        // LIGHTBOX
-        // =====================================================================
         let lightboxPhotos = [];
         let lightboxIndex = 0;
 
         function openLightbox(index) {
-            lightboxPhotos = galleryPhotos;
+            lightboxPhotos = allGalleryPhotos;
             lightboxIndex = index;
             const modal = document.getElementById('lightbox');
             const img = document.getElementById('lightbox-img');
@@ -1126,7 +1032,7 @@
             const p = lightboxPhotos[lightboxIndex];
             const src = p.image.startsWith('http') ? p.image : p.image;
             img.src = src;
-            img.onerror = function() { this.src = 'https://placehold.co/800x600/064E3B/C5A059?text=Image'; };
+            img.onerror = function() { this.src = 'https://placehold.co/800x600/064E3B/C5A059?text=ছবি'; };
             caption.textContent = p.caption || '';
             modal.classList.add('open');
         }
@@ -1154,11 +1060,58 @@
             caption.textContent = p.caption || '';
         }
 
-        // =====================================================================
-        // DYNAMIC REVIEWS
-        // =====================================================================
-        let reviews = [];
-        let reviewIndex = 0;
+        async function loadNewsTicker() {
+            const tickerWrap = document.querySelector('#news-ticker .ticker-wrap');
+            if (!tickerWrap) return;
+
+            const sheetUrl = AGENCY_CONFIG.tickerSheetCsvUrl;
+
+            if (sheetUrl && sheetUrl.trim() !== "") {
+                try {
+                    const response = await fetch(sheetUrl);
+                    const csvData = await response.text();
+                    const rows = parseCSV(csvData);
+
+                    if (rows.length > 1) {
+                        const headers = rows[0];
+                        const newsItems = [];
+
+                        for (let i = 1; i < rows.length; i++) {
+                            const row = rows[i];
+                            const getCol = (keywords) => {
+                                const idx = headers.findIndex(h => keywords.some(k => h.trim().toLowerCase().includes(k.toLowerCase())));
+                                return idx !== -1 && row[idx] ? row[idx].trim() : '';
+                            };
+
+                            const status = getCol(['অবস্থা', 'স্ট্যাটাস', 'Status']);
+                            if (status && (status.includes('বন্ধ') || status.toLowerCase() === 'inactive')) continue;
+
+                            const newsText = getCol(['খবর', 'নিউস', 'News', 'শিরোনাম', 'Title']);
+                            if (newsText) {
+                                newsItems.push(newsText);
+                            }
+                        }
+
+                        if (newsItems.length > 0) {
+                            const separator = ' <span class="text-xs font-medium text-emerald-900 mr-6">•</span> ';
+                            const label = '<span class="text-xs font-medium text-emerald-900 mr-6">সর্বশেষ খবর</span>';
+                            const itemsHtml = newsItems.map(item => `<span class="text-sm text-slate-600 mr-3">${item} → </span>`).join(separator);
+                            const fullHtml = label + itemsHtml + separator + label + itemsHtml + separator;
+                            tickerWrap.innerHTML = fullHtml;
+
+                            wrapBanglaDigits(tickerWrap);
+                            lucide.createIcons();
+                            return;
+                        }
+                    }
+                } catch (error) {
+                    console.error("News ticker Google Sheet load error:", error);
+                }
+            }
+
+            wrapBanglaDigits(tickerWrap);
+            lucide.createIcons();
+        }
 
         async function loadReviews() {
             const sheetUrl = AGENCY_CONFIG.reviewsSheetCsvUrl;
@@ -1184,8 +1137,8 @@
                         for (let i = 1; i < rows.length; i++) {
                             const row = rows[i];
                             const getCol = (keywords) => {
-                                const idx = headers.findIndex(h => keywords.some(k => h.includes(k)));
-                                return idx !== -1 && row[idx] ? row[idx] : '';
+                                const idx = headers.findIndex(h => keywords.some(k => h.trim().toLowerCase().includes(k.toLowerCase())));
+                                return idx !== -1 && row[idx] ? row[idx].trim() : '';
                             };
 
                             const status = getCol(['অবস্থা', 'স্ট্যাটাস', 'Status']);
@@ -1194,13 +1147,13 @@
                             const name = getCol(['নাম', 'Name']);
                             const loc = getCol(['ঠিকানা', 'Location', 'Address', 'ঠিকানা']);
                             const pkg = getCol(['প্যাকেজ', 'Package']);
-                            const rev = getCol(['মতামত', 'Review', 'Comment', 'বিরতি']);
+                            const rev = getCol(['মতামত', 'Review', 'Comment', 'বಿರতি']);
 
-                            if (name || rev) parsed.push({ name: name || 'অজান্তে', location: loc || '', package: pkg || '', review: rev || '' });
+                            if (name || rev) parsed.push({ name: name || 'সম্মানিত হাজী', location: loc || '', package: pkg || '', review: rev || '' });
                         }
 
                         if (parsed.length > 0) {
-                            reviews = parsed;
+                            allReviews = parsed;
                             reviewIndex = 0;
                             renderReviews();
                             return;
@@ -1211,10 +1164,13 @@
                 }
             }
 
-            reviews = fallbackReviews;
+            allReviews = fallbackReviews;
             reviewIndex = 0;
             renderReviews();
         }
+
+        let allReviews = [];
+        let reviewIndex = 0;
 
         function renderReviews() {
             const track = document.getElementById('reviews-slider-track');
@@ -1222,10 +1178,10 @@
             if (!track) return;
 
             const showCount = window.innerWidth < 768 ? 1 : 3;
-            const maxStart = Math.max(0, reviews.length - showCount);
+            const maxStart = Math.max(0, allReviews.length - showCount);
             reviewIndex = Math.min(reviewIndex, maxStart);
 
-            const visible = reviews.slice(reviewIndex, reviewIndex + showCount);
+            const visible = allReviews.slice(reviewIndex, reviewIndex + showCount);
 
             track.innerHTML = visible.map(r => `
                 <div class="reviews-slider-slide bg-white p-7 rounded-2xl border border-cream-200 flex flex-col justify-between">
@@ -1246,14 +1202,13 @@
             `).join('');
 
             if (dotsContainer) {
-                const totalDots = Math.max(1, Math.ceil(reviews.length / showCount));
+                const totalDots = Math.max(1, Math.ceil(allReviews.length / showCount));
                 const currentDot = Math.floor(reviewIndex / showCount);
                 dotsContainer.innerHTML = Array(totalDots).fill('').map((_, i) => `
                     <button class="media-dot ${i === currentDot ? 'active' : ''}" onclick="goToReviewDot(${i})"></button>
                 `).join('');
             }
 
-            // Apply Bangla digit styling to new review text
             wrapBanglaDigits(track);
             lucide.createIcons();
         }
@@ -1272,25 +1227,23 @@
 
         function nextReview() {
             const showCount = window.innerWidth < 768 ? 1 : 3;
-            const maxStart = Math.max(0, reviews.length - showCount);
+            const maxStart = Math.max(0, allReviews.length - showCount);
             reviewIndex = Math.min(maxStart, reviewIndex + showCount);
             renderReviews();
         }
 
-        // =====================================================================
-        // MODAL CLOSE ON OUTSIDE CLICK
-        // =====================================================================
         window.addEventListener('click', (e) => {
             const videoModal = document.getElementById('video-modal');
             const lightbox = document.getElementById('lightbox');
             if (videoModal && e.target === videoModal) closeVideoModal();
             if (lightbox && e.target === lightbox) closeLightbox();
         });
+
+        window.addEventListener('DOMContentLoaded', () => {
             document.getElementById('top-license').textContent = AGENCY_CONFIG.licenseNo;
             document.getElementById('top-phone').textContent = AGENCY_CONFIG.phoneDisplay;
             document.getElementById('top-whatsapp').textContent = AGENCY_CONFIG.whatsappDisplay;
 
-            // Re-apply digit wrapping for any text set after DOMContentLoaded
             wrapBanglaDigits(document.body);
 
             lucide.createIcons();
@@ -1301,7 +1254,6 @@
             loadReviews();
             startHeroSlideshow();
 
-            // Mobile menu toggle
             const mobileMenuBtn = document.getElementById('mobile-menu-btn');
             const mobileMenu = document.getElementById('mobile-menu');
             if (mobileMenuBtn && mobileMenu) {
@@ -1310,7 +1262,6 @@
                     mobileMenu.classList.toggle('hidden');
                     mobileMenuBtn.setAttribute('aria-expanded', String(!isOpen));
                 });
-                // Close menu when clicking a link
                 mobileMenu.querySelectorAll('.mobile-link').forEach(link => {
                     link.addEventListener('click', () => {
                         mobileMenu.classList.add('hidden');
@@ -1319,6 +1270,30 @@
                 });
             }
         });
+
+        let currentHeroSlide = 0;
+        const HERO_INTERVAL = 4500;
+
+        function getHeroSlides() {
+            return document.querySelectorAll('.hero-slide');
+        }
+
+        function nextHeroSlide() {
+            const slides = getHeroSlides();
+            if (slides.length === 0) return;
+            const prev = slides[currentHeroSlide];
+            currentHeroSlide = (currentHeroSlide + 1) % slides.length;
+            const next = slides[currentHeroSlide];
+
+            prev.classList.remove('opacity-100');
+            prev.classList.add('opacity-0');
+            next.classList.remove('opacity-0');
+            next.classList.add('opacity-100');
+        }
+
+        function startHeroSlideshow() {
+            setInterval(nextHeroSlide, HERO_INTERVAL);
+        }
     </script>
 
     <!-- Top Trust Bar -->
@@ -1350,7 +1325,6 @@
     <header class="sticky top-0 z-40 bg-cream-50/95 backdrop-blur-md border-b border-cream-200">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-20">
-                <!-- Brand Logo -->
                 <a href="#home" class="flex items-center gap-3 group">
                     <img
                         src="mubassirah-logo.png"
@@ -1364,7 +1338,6 @@
                     </div>
                 </a>
 
-                <!-- Desktop Navigation Links -->
                 <nav class="hidden lg:flex items-center gap-8 text-[15px] font-medium font-bornomala text-slate-700">
                     <a href="#home" class="hover:text-emerald-850 transition-colors">হোম</a>
                     <a href="#packages" class="hover:text-emerald-850 transition-colors">হজ ও ওমরাহ প্যাকেজ</a>
@@ -1375,7 +1348,6 @@
                     <a href="#contact" class="hover:text-emerald-850 transition-colors">যোগাযোগ</a>
                 </nav>
 
-                <!-- Primary CTA & Mobile Menu -->
                 <div class="flex items-center gap-2">
                     <button onclick="openWhatsAppGeneral()" class="inline-flex items-center gap-2 bg-emerald-850 hover:bg-emerald-900 text-white text-sm font-medium px-4 sm:px-5 py-2.5 rounded-xl shadow-sm transition-all">
                         <i data-lucide="message-circle" class="w-4 h-4 text-gold-500"></i>
@@ -1389,7 +1361,6 @@
                 </div>
             </div>
 
-            <!-- Mobile Navigation Drawer -->
             <div id="mobile-menu" class="hidden lg:hidden bg-cream-50 border-t border-cream-200 px-4 pt-3 pb-6 space-y-2 font-bornomala">
                 <a href="#home" class="mobile-link block px-3 py-2.5 rounded-lg text-base font-medium text-slate-800 hover:bg-cream-100">হোম</a>
                 <a href="#packages" class="mobile-link block px-3 py-2.5 rounded-lg text-base font-medium text-slate-800 hover:bg-cream-100">হজ ও ওমরাহ প্যাকেজসমূহ</a>
@@ -1404,14 +1375,13 @@
 
     <!-- Hero Section -->
     <section id="home" class="relative bg-emerald-950 text-white overflow-hidden">
-        <!-- Hero Auto-Slideshow Background -->
         <div class="absolute inset-0 z-0">
             <div class="hero-slides absolute inset-0 w-full h-full overflow-hidden">
                 <div class="hero-slide absolute inset-0 w-full h-full opacity-100 transition-opacity duration-1000 ease-in-out">
                     <img
                         src="Kaaba.jpg"
                         alt="পবিত্র মসজিদুল হারাম ও কাবা শরীফ"
-                        onerror="this.onerror=null; this.src='https://placehold.co/1920x900/043927/C5A059?text=Masjid+al-Haram'"
+                        onerror="this.onerror=null; this.src='https://placehold.co/1920x900/043927/C5A059?text=মসজিদুল হারাম'"
                         class="w-full h-full object-cover object-center"
                     >
                 </div>
@@ -1419,7 +1389,7 @@
                     <img
                         src="Madina.jpg"
                         alt="মসজিদে নববী ও গাম্বুজ, মদিনা"
-                        onerror="this.onerror=null; this.src='https://placehold.co/1920x900/043927/C5A059?text=Masjid+an-Nabawi'"
+                        onerror="this.onerror=null; this.src='https://placehold.co/1920x900/043927/C5A059?text=মসজিদে নববী'"
                         class="w-full h-full object-cover object-center"
                     >
                 </div>
@@ -1427,7 +1397,7 @@
                     <img
                         src="Arafa.jpg"
                         alt="আরাফাত ময়দান, হাজীর পবিত্র স্থল"
-                        onerror="this.onerror=null; this.src='https://placehold.co/1920x900/043927/C5A059?text=Mount+Arafat'"
+                        onerror="this.onerror=null; this.src='https://placehold.co/1920x900/043927/C5A059?text=আরাফাত'"
                         class="w-full h-full object-cover object-center"
                     >
                 </div>
@@ -1435,12 +1405,11 @@
                     <img
                         src="Stone.jpg"
                         alt="মিনা ও জামরাত, হাজী ক্যাম্প"
-                        onerror="this.onerror=null; this.src='https://placehold.co/1920x900/043927/C5A059?text=Mina+Muzdalifah'"
+                        onerror="this.onerror=null; this.src='https://placehold.co/1920x900/043927/C5A059?text=মিনা'"
                         class="w-full h-full object-cover object-center"
                     >
                 </div>
             </div>
-            <!-- Directional Gradient Overlay: strongest at bottom (text area), fading to transparent at top -->
             <div class="absolute inset-0 z-10 bg-gradient-to-t from-emerald-950 via-emerald-950/60 to-transparent/0 pointer-events-none"></div>
         </div>
 
@@ -1517,7 +1486,6 @@
 
     <!-- Dynamic Packages Section -->
     <section id="packages" class="py-20 sm:py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <!-- Latest News Ticker: above packages heading -->
         <div id="news-ticker" class="relative overflow-hidden mb-10 border border-cream-200 bg-cream-50 rounded-xl">
             <div class="ticker-wrap flex items-center py-3 px-4 whitespace-nowrap animate-[marquee_20s_linear_infinite]">
                 <span class="text-xs font-medium text-emerald-900 mr-6">সর্বশেষ খবর</span>
@@ -1531,7 +1499,6 @@
                 <span class="text-xs font-medium text-emerald-900 mr-6">•</span>
                 <span class="text-sm text-slate-600 mr-3">পূর্ণাঙ্গ হজ প্যাকেজের আসন সীমিত → </span>
                 <span class="text-xs font-medium text-emerald-900 mr-6">•</span>
-                <!-- Duplicate for seamless loop -->
                 <span class="text-xs font-medium text-emerald-900 mr-6">সর্বশেষ খবর</span>
                 <span class="text-sm text-slate-600 mr-3">আগামী রমজান ওমরাহ রেজিস্ট্রেশন শুরু হয়েছে → </span>
                 <span class="text-xs font-medium text-emerald-900 mr-6">•</span>
@@ -1546,13 +1513,16 @@
             </div>
         </div>
 
+        <div id="sheet-status-text" class="mb-6 text-xs text-center px-4 py-2 rounded bg-emerald-50 text-emerald-800 border border-emerald-200/50 hidden">
+            লাইভ গুগল শিট থেকে আপডেটকৃত
+        </div>
+
         <div class="text-center max-w-2xl mx-auto mb-12">
             <span class="text-xs font-semibold uppercase tracking-widest text-gold-700 bg-amber-50 px-3 py-1 rounded-full border border-amber-200/70">আমাদের প্যাকেজসমূহ</span>
             <h2 class="text-2xl sm:text-4xl font-bold text-emerald-950 mt-3 mb-4">আপনার বাজেট ও পছন্দ অনুযায়ী হজ ও ওমরাহ প্যাকেজ</h2>
-            <p class="text-slate-600 text-sm sm:text-base">প্রতিটি প্যাকেজে ভিসা, বিমান টিকিট, মক্কা-মদিনায় হোটেল, যাতায়াত এবং অভিজ্ঞ আলেম দ্বারা পরিচালিত জিয়ারাহ অন্তর্ভুক্ত।</p>
+            <p class="text-slate-600 text-sm sm:text-base">প্রতিটি প্যাকেজে ভিসা, বিমান টিকিট, মক্কা-মদিনায় হোটেল, যাতায়াত এবং অভিজ্ঞ আলেম দ্বারা পরিচালিত জিয়ারAH অন্তর্ভুক্ত।</p>
         </div>
 
-        <!-- Category Filter Tabs -->
         <div class="flex flex-col sm:flex-row justify-between items-center gap-4 mb-10">
             <div class="inline-flex p-1.5 bg-cream-100 rounded-xl border border-cream-200" role="tablist">
                 <button onclick="filterPackages('all')" data-filter="all" class="filter-btn active px-5 py-2 rounded-lg text-sm font-semibold bg-emerald-850 text-white shadow-sm transition-all">সব প্যাকেজ</button>
@@ -1635,26 +1605,23 @@
                 <p class="text-slate-600 text-sm sm:text-base max-w-md">পবিত্র হজ ও ওমরাহ সফরের স্মরণীয় মুহূর্ত ও কাফেলার অভিজ্ঞতা আমাদের ক্যামেরাবন্দী ছবি ও ভিডিওয় দেখুন।</p>
             </div>
 
-            <!-- Video Gallery -->
             <div class="mb-16">
                 <h3 class="text-xl font-bold text-emerald-950 mb-6">ভিডিও গাইড ও কাফেলার দৃশ্য</h3>
-                <div class="relative group">
-                    <div id="video-grid" class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                        <!-- Videos loaded dynamically -->
-                    </div>
-                    <div class="flex justify-between items-center mt-6">
-                        <button id="video-prev" class="media-nav-btn prev" aria-label="পূর্ববর্তী">
-                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
-                        </button>
-                        <div class="media-dot-indicators" id="video-dots"></div>
-                        <button id="video-next" class="media-nav-btn next" aria-label="পরবর্তী">
-                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
-                        </button>
-                    </div>
+                <div id="video-grid" class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <!-- Videos loaded dynamically -->
+                </div>
+                <div class="flex justify-between items-center mt-6">
+                    <button id="video-prev" class="media-nav-btn prev" aria-label="পূর্ববর্তী">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+                    </button>
+                    <div class="media-dot-indicators" id="video-dots"></div>
+                    <button id="video-next" class="media-nav-btn next" aria-label="পরবর্তী">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                    </button>
                 </div>
             </div>
+            </div>
 
-            <!-- Photo Gallery -->
             <div class="mb-16">
                 <h3 class="text-xl font-bold text-emerald-950 mb-6">পবিত্র সফর ও কাফেলার কিছু স্থিরচিত্র</h3>
                 <div id="photo-grid" class="media-photo-grid">
@@ -1755,7 +1722,6 @@
         </div>
     </section>
 
-    <!-- Testimonials -->
     <!-- Dynamic Reviews: হাজীদের অভিজ্ঞতা -->
     <section id="reviews" class="py-20 bg-cream-100/70 border-t border-cream-200">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -1771,11 +1737,11 @@
             </div>
 
             <div class="flex justify-between items-center mb-6">
-                <button id="review-prev" class="media-nav-btn prev" aria-label="পূর্ববর্তী">
+                <button id="review-prev" class="media-nav-btn prev" aria-label="পূর্ববর্তী" style="position: relative; top: auto; left: auto; right: auto; transform: none; margin: 0;">
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
                 </button>
                 <div class="media-dot-indicators" id="review-dots"></div>
-                <button id="review-next" class="media-nav-btn next" aria-label="পরবর্তী">
+                <button id="review-next" class="media-nav-btn next" aria-label="পরবর্তী" style="position: relative; top: auto; left: auto; right: auto; transform: none; margin: 0;">
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
                 </button>
             </div>
@@ -1828,7 +1794,8 @@
 
                         <div class="flex items-start gap-3.5">
                             <div class="w-10 h-10 rounded-xl bg-emerald-800 text-gold-500 flex items-center justify-center shrink-0">
-<svg class="w-5 h-5 text-gold-500 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>                            </div>
+                                <svg class="w-5 h-5 text-gold-500 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+                            </div>
                             <div>
                                 <p class="font-semibold text-white">ফেসবুক পেইজ</p>
                                 <a href="https://www.facebook.com/MubassirahTravelsTours" target="_blank" rel="noopener noreferrer" class="text-cream-200/80 mt-0.5 hover:text-gold-500 transition-colors text-sm">Mubassirah Travels & Tours</a>
@@ -1916,7 +1883,6 @@
                         <li><a href="#packages" class="hover:text-gold-500 transition-colors">ওমরাহ প্যাকেজসমূহ</a></li>
                         <li><a href="#packages" class="hover:text-gold-500 transition-colors">হজ প্যাকেজ</a></li>
                         <li><a href="#why-us" class="hover:text-gold-500 transition-colors">আমাদের সেবাসমূহ</a></li>
-                        <li><a href="#media-gallery" class="hover:text-gold-500 transition-colors">সফরের মুহূর্ত</a></li>
                         <li><a href="#process" class="hover:text-gold-500 transition-colors">প্রয়োজনীয় কাগজপত্র</a></li>
                     </ul>
                 </div>
@@ -1927,7 +1893,7 @@
                         <li>• হজ লাইসেন্স নং: <span class="text-white font-medium">1055</span></li>
                         <li>• ATAB সদস্য নং: <span class="text-white font-medium">3492</span></li>
                         <li>• HAAB সদস্য নং: <span class="text-white font-medium">1108</span></li>
-                        <li>• বেসামরিক বিমান পরিবহন মন্ত্রণালয় অনুমোদিত</span></li>
+                        <li>• বেসামরিক বিমান পরিবহন মন্ত্রণালয় অনুমোদিত</li>
                         <li><a href="https://www.facebook.com/MubassirahTravelsTours" target="_blank" rel="noopener noreferrer" class="hover:text-gold-500 transition-colors">ফেসবুক পেইজ: Mubassirah Travels & Tours</a></li>
                     </ul>
                 </div>
@@ -1952,6 +1918,12 @@
         </button>
         <div class="video-modal-content">
             <iframe id="video-modal-iframe" src="" allowfullscreen></iframe>
+            <div class="video-modal-fallback mt-4 p-4 bg-emerald-900 rounded-xl text-center text-white">
+                <p class="text-sm mb-2">ভিডিও দেখতে সমস্যা হচ্ছে?</p>
+                <a id="video-modal-direct-link" href="#" target="_blank" rel="noopener noreferrer" class="text-gold-500 hover:text-gold-400 underline">
+                    YouTube-এ সরাসরি দেখুন →
+                </a>
+            </div>
         </div>
     </div>
 
