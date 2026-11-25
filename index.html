@@ -1029,18 +1029,6 @@ function renderGallery() {
             lucide.createIcons();
         }
 
-        let photoIndex = 0;
-
-        document.getElementById('photo-prev')?.addEventListener('click', () => {
-            photoIndex = (photoIndex - 1 + allGalleryPhotos.length) % allGalleryPhotos.length;
-            renderGalleryFromIndex(photoIndex);
-        });
-
-        document.getElementById('photo-next')?.addEventListener('click', () => {
-            photoIndex = (photoIndex + 1) % allGalleryPhotos.length;
-            renderGalleryFromIndex(photoIndex);
-        });
-
         function renderGalleryFromIndex(index) {
             const container = document.getElementById('photo-grid');
             const showMoreBtn = document.getElementById('photo-show-more');
@@ -1318,6 +1306,28 @@ function renderGallery() {
                         mobileMenuBtn.setAttribute('aria-expanded', 'false');
                     });
                 });
+            }
+
+            // Photo gallery navigation
+            const photoPrevBtn = document.getElementById('photo-prev');
+            const photoNextBtn = document.getElementById('photo-next');
+            if (photoPrevBtn && photoNextBtn) {
+                photoPrevBtn.addEventListener('click', () => {
+                    photoIndex = (photoIndex - 1 + allGalleryPhotos.length) % allGalleryPhotos.length;
+                    renderGalleryFromIndex(photoIndex);
+                });
+                photoNextBtn.addEventListener('click', () => {
+                    photoIndex = (photoIndex + 1) % allGalleryPhotos.length;
+                    renderGalleryFromIndex(photoIndex);
+                });
+            }
+
+            // Review navigation
+            const reviewPrevBtn = document.getElementById('review-prev');
+            const reviewNextBtn = document.getElementById('review-next');
+            if (reviewPrevBtn && reviewNextBtn) {
+                reviewPrevBtn.addEventListener('click', prevReview);
+                reviewNextBtn.addEventListener('click', nextReview);
             }
         });
 
@@ -1669,7 +1679,6 @@ function renderGallery() {
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
                     </button>
                 </div>
-            </div>
             </div>
 
                 <div class="mb-16">
