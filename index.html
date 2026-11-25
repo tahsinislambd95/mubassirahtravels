@@ -109,6 +109,277 @@
             font-variant-numeric: normal;
             font-feature-settings: "lnum" 0;
         }
+
+        /* Media Gallery Section */
+        .media-video-card {
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .media-video-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 30px -10px rgba(6, 78, 59, 0.15);
+        }
+        .media-video-thumbnail {
+            position: relative;
+            overflow: hidden;
+            border-radius: 12px;
+            background: #000;
+        }
+        .media-video-play-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(16, 38, 32, 0.7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.2s ease;
+        }
+        .media-video-card:hover .media-video-play-overlay {
+            opacity: 1;
+        }
+        .media-video-play-btn {
+            width: 60px;
+            height: 60px;
+            background: #C5A059;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            filter: drop-shadow(0 4px 10px rgba(197, 160, 89, 0.4));
+        }
+        .media-video-play-btn::before {
+            content: "";
+            display: inline-block;
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 10px 0 10px 16px;
+            border-color: transparent transparent transparent #ffffff;
+            margin-left: 4px;
+        }
+        .media-nav-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.9);
+            border: none;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 10;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+            transition: background 0.2s ease;
+        }
+        .media-nav-btn:hover {
+            background: #C5A059;
+            color: #064E3B;
+        }
+        .media-nav-btn.prev { left: 8px; }
+        .media-nav-btn.next { right: 8px; }
+        .media-nav-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+        .media-dot-indicators {
+            display: flex;
+            justify-content: center;
+            gap: 6px;
+            margin-top: 12px;
+        }
+        .media-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #ddd;
+            cursor: pointer;
+            transition: background 0.2s ease;
+        }
+        .media-dot.active { background: #C5A059; }
+
+        /* Photo Gallery Grid */
+        .media-photo-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+        }
+        @media (min-width: 768px) {
+            .media-photo-grid { grid-template-columns: repeat(3, 1fr); }
+        }
+        @media (min-width: 1024px) {
+            .media-photo-grid { grid-template-columns: repeat(4, 1fr); }
+        }
+        .media-photo-card {
+            position: relative;
+            border-radius: 10px;
+            overflow: hidden;
+            background: #ddd;
+            aspect-ratio: 4/3;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+        .media-photo-card:hover { transform: scale(1.03); }
+        .media-photo-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        .media-photo-caption-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(6, 78, 59, 0.8);
+            color: white;
+            display: flex;
+            align-items: flex-end;
+            padding: 12px;
+            opacity: 0;
+            transition: opacity 0.2s ease;
+        }
+        .media-photo-card:hover .media-photo-caption-overlay { opacity: 1; }
+        .media-show-more-btn {
+            margin-top: 16px;
+            padding: 10px 20px;
+            background: #C5A059;
+            color: #064E3B;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s ease;
+        }
+        .media-show-more-btn:hover { background: #B45309; }
+
+        /* Lightbox Modal */
+        .lightbox {
+            position: fixed;
+            inset: 0;
+            z-index: 100;
+            background: rgba(0,0,0,0.9);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+        .lightbox.open { opacity: 1; pointer-events: auto; }
+        .lightbox-content {
+            max-width: 90vw;
+            max-height: 80vh;
+            position: relative;
+        }
+        .lightbox-content img {
+            max-width: 100%;
+            max-height: 70vh;
+            object-fit: contain;
+            border-radius: 6px;
+        }
+        .lightbox-caption {
+            margin-top: 12px;
+            color: white;
+            text-align: center;
+            font-size: 14px;
+        }
+        .lightbox-close {
+            position: absolute;
+            top: -40px;
+            right: 0;
+            background: rgba(255,255,255,0.2);
+            border: none;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            color: white;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .lightbox-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255,255,255,0.15);
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            color: white;
+            cursor: pointer;
+            font-size: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 50;
+        }
+        .lightbox-nav.prev { left: 10px; }
+        .lightbox-nav.next { right: 10px; }
+
+        /* Video Modal */
+        .video-modal {
+            position: fixed;
+            inset: 0;
+            z-index: 100;
+            background: rgba(0,0,0,0.9);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+        .video-modal.open { opacity: 1; pointer-events: auto; }
+        .video-modal-content {
+            max-width: 90vw;
+            max-height: 80vh;
+            background: #000;
+            border-radius: 8px;
+            position: relative;
+            overflow: hidden;
+        }
+        .video-modal-close {
+            position: absolute;
+            top: -40px;
+            right: 0;
+            background: rgba(255,255,255,0.2);
+            border: none;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            color: white;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .video-modal iframe {
+            width: 100%;
+            height: 56.25vw;
+            max-height: 70vh;
+            border: 0;
+            display: block;
+        }
+
+        /* Reviews Slider */
+        .reviews-slider-container {
+            position: relative;
+            overflow: hidden;
+        }
+        .reviews-slider-track {
+            display: flex;
+            transition: transform 0.4s ease;
+        }
+        .reviews-slider-slide {
+            flex: 0 0 100%;
+            max-width: 100%;
+        }
+        @media (min-width: 768px) {
+            .reviews-slider-track { transform: translateX(0); }
+            .reviews-slider-slide { flex: 0 0 33.333%; max-width: 33.333%; }
+        }
     </style>
 </head>
 <body class="antialiased selection:bg-emerald-850 selection:text-white">
@@ -125,7 +396,10 @@
             facebookUrl: "https://www.facebook.com/MubassirahTravelsTours",
             mapsUrl: "https://www.google.com/maps/place/Mubassirah+Travels+And+Tours/data=!4m2!3m1!1s0x4168b7fd5ba43973:0x6c3a96dfdf26b28e!18m1!1e1?entry=gps&coh=192189&g_ep=CAESBzI2LjQ3LjAYACDXggMqfSwxMDA4NDAwNDUsOTQyMDczOTQsOTQyMDc1MDYsOTQyMDg1MDYsOTQyMTg2NTMsOTQyMjk4MzksMTAwODQ4MDk2LDEwMDgyNTAyNSwxMDA4Mjc5NzUsMTAwODM4MzU5LDEyMTgxNjQ2MSwxMDA4NDU5MzQsMTAwODQ3NDQ1QgJCRA%3D%3D&skid=3a538def-dc30-4b6e-83aa-52f6eb944a11&g_st=ans",
             packagesSheetCsvUrl: "https://docs.google.com/spreadsheets/d/e/2PACX-1vT6pxyqQa-1wGt2MwcHGgpoiyTkyCsdhQaj37cep9WhLIfrdS2OvCqYB9hqiWceXVpUW9YUcxO8IVw2/pub?gid=0&single=true&output=csv",
-            tickerSheetCsvUrl: "https://docs.google.com/spreadsheets/d/e/2PACX-1vT6pxyqQa-1wGt2MwcHGgpoiyTkyCsdhQaj37cep9WhLIfrdS2OvCqYB9hqiWceXVpUW9YUcxO8IVw2/pub?gid=353493750&single=true&output=csv"
+            tickerSheetCsvUrl: "https://docs.google.com/spreadsheets/d/e/2PACX-1vT6pxyqQa-1wGt2MwcHGgpoiyTkyCsdhQaj37cep9WhLIfrdS2OvCqYB9hqiWceXVpUW9YUcxO8IVw2/pub?gid=353493750&single=true&output=csv",
+            gallerySheetCsvUrl: "https://docs.google.com/spreadsheets/d/e/2PACX-1vT6pxyqQa-1wGt2MwcHGgpoiyTkyCsdhQaj37cep9WhLIfrdS2OvCqYB9hqiWceXVpUW9YUcxO8IVw2/pub?gid=1941317110&single=true&output=csv",
+            videosSheetCsvUrl: "https://docs.google.com/spreadsheets/d/e/2PACX-1vT6pxyqQa-1wGt2MwcHGgpoiyTkyCsdhQaj37cep9WhLIfrdS2OvCqYB9hqiWceXVpUW9YUcxO8IVw2/pub?gid=1041682450&single=true&output=csv",
+            reviewsSheetCsvUrl: "https://docs.google.com/spreadsheets/d/e/2PACX-1vT6pxyqQa-1wGt2MwcHGgpoiyTkyCsdhQaj37cep9WhLIfrdS2OvCqYB9hqiWceXVpUW9YUcxO8IVw2/pub?gid=377828727&single=true&output=csv"
         };
 
         // Sample Packages (all digits stored as English; converted to Bangla by wrapBanglaDigits)
@@ -596,7 +870,422 @@
             setInterval(nextHeroSlide, HERO_INTERVAL);
         }
 
-        window.addEventListener('DOMContentLoaded', () => {
+        // =====================================================================
+        // YOUTUBE ID EXTRACTION
+        // =====================================================================
+        function extractYouTubeId(url) {
+            if (!url) return null;
+            const patterns = [
+                /(?:youtube\.com\/watch\?v=)([^&\n?#]+)/,
+                /(?:youtu\.be\/)([^&\n?#]+)/,
+                /(?:youtube\.com\/shorts\/)([^&\n?#]+)/,
+                /(?:youtube\.com\/embed\/)([^&\n?#]+)/
+            ];
+            for (const p of patterns) {
+                const m = url.match(p);
+                if (m) return m[1];
+            }
+            return null;
+        }
+
+        // =====================================================================
+        // VIDEO GALLERY
+        // =====================================================================
+        let videos = [];
+        let currentVideoIndex = 0;
+
+        async function loadVideos() {
+            const sheetUrl = AGENCY_CONFIG.videosSheetCsvUrl;
+            const container = document.getElementById('video-grid');
+            if (!container) return;
+
+            const fallbackVideos = [
+                { title: "ওমরাহ কাফেলার বিদায়", description: "মক্কায় কাবা শরীফের সামনে আমাদের কাফেলার একtyabrীয় দৃশ্য", link: "https://www.youtube.com/watch?v=dQw4w9WgXcQ" },
+                { title: "মদিনায় রওজা শরীফ জিয়ারাত", description: "মসজিদে নববীর পবিত্র রওজা শরীফে জিয়ারাতের সুন্দর মুহূর্ত", link: "https://www.youtube.com/watch?v=dQw4w9WgXcQ" },
+                { title: "হজ কাফেলার минার একত্রে", description: "মিনায় হাজীদের একত্রে préfet namaazের সুন্দর দৃশ্য", link: "https://www.youtube.com/watch?v=dQw4w9WgXcQ" }
+            ];
+
+            if (sheetUrl && sheetUrl.trim() !== "") {
+                try {
+                    const response = await fetch(sheetUrl);
+                    const csvData = await response.text();
+                    const rows = parseCSV(csvData);
+
+                    if (rows.length > 1) {
+                        const headers = rows[0];
+                        const parsed = [];
+
+                        for (let i = 1; i < rows.length; i++) {
+                            const row = rows[i];
+                            const getCol = (keywords) => {
+                                const idx = headers.findIndex(h => keywords.some(k => h.includes(k)));
+                                return idx !== -1 && row[idx] ? row[idx] : '';
+                            };
+
+                            const status = getCol(['অবস্থা', 'স্ট্যাটাস', 'Status']);
+                            if (status && (status.includes('বন্ধ') || status.toLowerCase() === 'inactive')) continue;
+
+                            const title = getCol(['শিরোনাম', 'Title', 'নাম']);
+                            const desc = getCol(['বিবরণ', 'Description', 'বিস্তারিত']);
+                            const link = getCol(['লিংক', 'Link', 'URL', 'ইউআরএল']);
+
+                            if (title || link) {
+                                parsed.push({ title: title || 'বideo', description: desc || '', link: link || '' });
+                            }
+                        }
+
+                        if (parsed.length > 0) {
+                            videos = parsed;
+                            currentVideoIndex = 0;
+                            renderVideos();
+                            return;
+                        }
+                    }
+                } catch (e) {
+                    console.error("Video sheet load error:", e);
+                }
+            }
+
+            videos = fallbackVideos;
+            currentVideoIndex = 0;
+            renderVideos();
+        }
+
+        function renderVideos() {
+            const container = document.getElementById('video-grid');
+            const prevBtn = document.getElementById('video-prev');
+            const nextBtn = document.getElementById('video-next');
+            if (!container) return;
+
+            const showCount = window.innerWidth < 768 ? 1 : 3;
+            const maxStart = Math.max(0, videos.length - showCount);
+            currentVideoIndex = Math.min(currentVideoIndex, maxStart);
+
+            const visible = videos.slice(currentVideoIndex, currentVideoIndex + showCount);
+
+            container.innerHTML = visible.map(v => {
+                const ytId = extractYouTubeId(v.link);
+                const thumb = ytId ? `https://img.youtube.com/vi/${ytId}/hqdefault.jpg` : 'https://placehold.co/400x225/064E3B/C5A059?text=Video';
+                return `
+                <article class="media-video-card bg-white rounded-2xl border border-cream-200 overflow-hidden card-hover" onclick="openVideoModal('${ytId || ''}')">
+                    <div class="media-video-thumbnail">
+                        <img src="${thumb}" alt="${v.title}" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/400x225/064E3B/C5A059?text=Video'">
+                        <div class="media-video-play-overlay">
+                            <div class="media-video-play-btn"></div>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="text-lg font-bold text-emerald-950 mb-1">${v.title}</h3>
+                        <p class="text-sm text-slate-600 line-clamp-2">${v.description}</p>
+                    </div>
+                </article>
+                `;
+            }).join('');
+
+            // Navigation buttons
+            if (prevBtn && nextBtn) {
+                prevBtn.disabled = currentVideoIndex <= 0;
+                nextBtn.disabled = currentVideoIndex >= maxStart;
+                prevBtn.onclick = () => { if (currentVideoIndex > 0) { currentVideoIndex -= showCount; renderVideos(); } };
+                nextBtn.onclick = () => { if (currentVideoIndex < maxStart) { currentVideoIndex += showCount; renderVideos(); } };
+            }
+        }
+
+        function openVideoModal(videoId) {
+            if (!videoId) return;
+            const modal = document.getElementById('video-modal');
+            const iframe = document.getElementById('video-modal-iframe');
+            if (modal && iframe) {
+                iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
+                modal.classList.add('open');
+            }
+        }
+
+        function closeVideoModal() {
+            const modal = document.getElementById('video-modal');
+            const iframe = document.getElementById('video-modal-iframe');
+            if (modal && iframe) {
+                modal.classList.remove('open');
+                iframe.src = '';
+            }
+        }
+
+        // =====================================================================
+        // PHOTO GALLERY
+        // =====================================================================
+        let galleryPhotos = [];
+        let galleryShowing = 6;
+
+        async function loadGallery() {
+            const sheetUrl = AGENCY_CONFIG.gallerySheetCsvUrl;
+            const container = document.getElementById('photo-grid');
+            if (!container) return;
+
+            const fallbackPhotos = [
+                { image: 'Kaaba.jpg', caption: 'পবিত্র মসজিদুল হারাম ও কাবা শরীফ' },
+                { image: 'Madina.jpg', caption: 'মসজিদে নববী ও গাম্বুজ' },
+                { image: 'Arafa.jpg', caption: 'আরাফাত ময়দান' },
+                { image: 'Stone.jpg', caption: 'মিনা ও জামরাত' }
+            ];
+
+            if (sheetUrl && sheetUrl.trim() !== "") {
+                try {
+                    const response = await fetch(sheetUrl);
+                    const csvData = await response.text();
+                    const rows = parseCSV(csvData);
+
+                    if (rows.length > 1) {
+                        const headers = rows[0];
+                        const parsed = [];
+
+                        for (let i = 1; i < rows.length; i++) {
+                            const row = rows[i];
+                            const getCol = (keywords) => {
+                                const idx = headers.findIndex(h => keywords.some(k => h.includes(k)));
+                                return idx !== -1 && row[idx] ? row[idx] : '';
+                            };
+
+                            const status = getCol(['অবস্থা', 'স্ট্যাটাস', 'Status']);
+                            if (status && (status.includes('বন্ধ') || status.toLowerCase() === 'inactive')) continue;
+
+                            const image = getCol(['ছবি', 'Image', 'ফটো']);
+                            const caption = getCol(['ক্যাপশন', 'Caption', 'ত svjetbir birton']);
+
+                            if (image) parsed.push({ image, caption: caption || '' });
+                        }
+
+                        if (parsed.length > 0) {
+                            galleryPhotos = parsed;
+                            galleryShowing = 6;
+                            renderGallery();
+                            return;
+                        }
+                    }
+                } catch (e) {
+                    console.error("Gallery sheet load error:", e);
+                }
+            }
+
+            galleryPhotos = fallbackPhotos;
+            galleryShowing = 6;
+            renderGallery();
+        }
+
+        function renderGallery() {
+            const container = document.getElementById('photo-grid');
+            const showMoreBtn = document.getElementById('photo-show-more');
+            if (!container) return;
+
+            const showCount = Math.min(galleryShowing, galleryPhotos.length);
+            const visible = galleryPhotos.slice(0, showCount);
+
+            container.innerHTML = visible.map((p, i) => {
+                const src = p.image.startsWith('http') ? p.image : p.image;
+                return `
+                <div class="media-photo-card" onclick="openLightbox(${i})">
+                    <img src="${src}" alt="${p.caption}" onerror="this.src='https://placehold.co/400x300/064E3B/C5A059?text=Image'">
+                    <div class="media-photo-caption-overlay">
+                        <span>${p.caption || 'ছবি'}</span>
+                    </div>
+                </div>
+                `;
+            }).join('');
+
+            if (showMoreBtn) {
+                if (galleryPhotos.length > galleryShowing) {
+                    showMoreBtn.classList.remove('hidden');
+                    showMoreBtn.textContent = galleryShowing < galleryPhotos.length ? 'আরও ছবি দেখুন' : 'কম দেখুন';
+                    showMoreBtn.onclick = () => {
+                        if (galleryShowing < galleryPhotos.length) {
+                            galleryShowing = Math.min(galleryShowing + 6, galleryPhotos.length);
+                        } else {
+                            galleryShowing = 6;
+                        }
+                        renderGallery();
+                    };
+                } else {
+                    showMoreBtn.classList.add('hidden');
+                }
+            }
+        }
+
+        // =====================================================================
+        // LIGHTBOX
+        // =====================================================================
+        let lightboxPhotos = [];
+        let lightboxIndex = 0;
+
+        function openLightbox(index) {
+            lightboxPhotos = galleryPhotos;
+            lightboxIndex = index;
+            const modal = document.getElementById('lightbox');
+            const img = document.getElementById('lightbox-img');
+            const caption = document.getElementById('lightbox-caption');
+            if (!modal || !img || !caption) return;
+
+            const p = lightboxPhotos[lightboxIndex];
+            const src = p.image.startsWith('http') ? p.image : p.image;
+            img.src = src;
+            img.onerror = function() { this.src = 'https://placehold.co/800x600/064E3B/C5A059?text=Image'; };
+            caption.textContent = p.caption || '';
+            modal.classList.add('open');
+        }
+
+        function closeLightbox() {
+            const modal = document.getElementById('lightbox');
+            if (modal) modal.classList.remove('open');
+        }
+
+        function prevLightbox() {
+            lightboxIndex = (lightboxIndex - 1 + lightboxPhotos.length) % lightboxPhotos.length;
+            const img = document.getElementById('lightbox-img');
+            const caption = document.getElementById('lightbox-caption');
+            const p = lightboxPhotos[lightboxIndex];
+            img.src = p.image.startsWith('http') ? p.image : p.image;
+            caption.textContent = p.caption || '';
+        }
+
+        function nextLightbox() {
+            lightboxIndex = (lightboxIndex + 1) % lightboxPhotos.length;
+            const img = document.getElementById('lightbox-img');
+            const caption = document.getElementById('lightbox-caption');
+            const p = lightboxPhotos[lightboxIndex];
+            img.src = p.image.startsWith('http') ? p.image : p.image;
+            caption.textContent = p.caption || '';
+        }
+
+        // =====================================================================
+        // DYNAMIC REVIEWS
+        // =====================================================================
+        let reviews = [];
+        let reviewIndex = 0;
+
+        async function loadReviews() {
+            const sheetUrl = AGENCY_CONFIG.reviewsSheetCsvUrl;
+            const container = document.getElementById('reviews-slider-track');
+            if (!container) return;
+
+            const fallbackReviews = [
+                { name: "মাহমুদুল হাসান", location: "উত্তরা, ঢাকা", package: "ওমরাহ কাফেলা", review: "আলহামদুলিল্লাহ, বাবা-মাকে নিয়ে 14 দিনের স্ট্যান্ডার্ড প্যাকেজে ওমরাহ সম্পন্ন করেছি। হোটেল কাবা শরীফের খুব কাছে হওয়ায় বয়স্ক বাবা-মায়ের নামাজে যেতে কোনো কষ্ট হয়নি। মুয়াল্লিম সাহেব প্রতিটি বিষয়ে খুব যত্ন নিয়ে গাইড করেছেন।" },
+                { name: "ডা. ফারহানা ইয়াসমিন", location: "ধানমন্ডি, ঢাকা", package: "ফ্যামিলি প্যাকেজ", review: "তাদের কথার সাথে কাজের শতভাগ মিল পেয়েছি। বুকিংয়ের সময় যে হোটেল ও ফ্লাইটের কথা বলা হয়েছিল ঠিক সেটিই দেওয়া হয়েছে। মক্কা থেকে মদিনায় যাওয়ার এসি বাস এবং জিয়ারAH ব্যবস্থাও ছিল অত্যন্ত গোছানো।" },
+                { name: "আলহাজ্ব আব্দুর রহমান", location: "কুমিল্লা", package: "হজ ও ওমরাহ", review: "প্রথমবার ওমরাহ করতে গিয়ে অনেক চিন্তায় ছিলাম, কিন্তু ঢাকায় ট্রেনিং করার পর সব ভয় কেটে যায়। মদিনায় মসজিদে নববীর একদম পাশে হোটেল হওয়ায় রওজা শরীফ জিয়ারত ও নামাজ আদায় করা খুব সহজ হয়েছে।" }
+            ];
+
+            if (sheetUrl && sheetUrl.trim() !== "") {
+                try {
+                    const response = await fetch(sheetUrl);
+                    const csvData = await response.text();
+                    const rows = parseCSV(csvData);
+
+                    if (rows.length > 1) {
+                        const headers = rows[0];
+                        const parsed = [];
+
+                        for (let i = 1; i < rows.length; i++) {
+                            const row = rows[i];
+                            const getCol = (keywords) => {
+                                const idx = headers.findIndex(h => keywords.some(k => h.includes(k)));
+                                return idx !== -1 && row[idx] ? row[idx] : '';
+                            };
+
+                            const status = getCol(['অবস্থা', 'স্ট্যাটাস', 'Status']);
+                            if (status && (status.includes('বন্ধ') || status.toLowerCase() === 'inactive')) continue;
+
+                            const name = getCol(['নাম', 'Name']);
+                            const loc = getCol(['ঠিকানা', 'Location', 'Address', 'ঠিকানা']);
+                            const pkg = getCol(['প্যাকেজ', 'Package']);
+                            const rev = getCol(['মতামত', 'Review', 'Comment', 'বিরতি']);
+
+                            if (name || rev) parsed.push({ name: name || 'অজান্তে', location: loc || '', package: pkg || '', review: rev || '' });
+                        }
+
+                        if (parsed.length > 0) {
+                            reviews = parsed;
+                            reviewIndex = 0;
+                            renderReviews();
+                            return;
+                        }
+                    }
+                } catch (e) {
+                    console.error("Review sheet load error:", e);
+                }
+            }
+
+            reviews = fallbackReviews;
+            reviewIndex = 0;
+            renderReviews();
+        }
+
+        function renderReviews() {
+            const track = document.getElementById('reviews-slider-track');
+            const dotsContainer = document.getElementById('review-dots');
+            if (!track) return;
+
+            const showCount = window.innerWidth < 768 ? 1 : 3;
+            const maxStart = Math.max(0, reviews.length - showCount);
+            reviewIndex = Math.min(reviewIndex, maxStart);
+
+            const visible = reviews.slice(reviewIndex, reviewIndex + showCount);
+
+            track.innerHTML = visible.map(r => `
+                <div class="reviews-slider-slide bg-white p-7 rounded-2xl border border-cream-200 flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center gap-1 text-gold-500 mb-4">
+                            ${Array(5).fill('<i data-lucide="star" class="w-4 h-4 fill-current"></i>').join('')}
+                        </div>
+                        <p class="text-slate-700 text-sm leading-relaxed mb-6 bn-digit">${r.review}</p>
+                    </div>
+                    <div class="pt-4 border-t border-cream-100 flex items-center justify-between">
+                        <div>
+                            <p class="font-bold text-emerald-950 text-sm">${r.name}</p>
+                            <p class="text-xs text-slate-500">${r.location}</p>
+                        </div>
+                        <span class="text-[11px] font-medium bg-emerald-50 text-emerald-850 px-2.5 py-1 rounded-md">${r.package}</span>
+                    </div>
+                </div>
+            `).join('');
+
+            if (dotsContainer) {
+                const totalDots = Math.max(1, Math.ceil(reviews.length / showCount));
+                const currentDot = Math.floor(reviewIndex / showCount);
+                dotsContainer.innerHTML = Array(totalDots).fill('').map((_, i) => `
+                    <button class="media-dot ${i === currentDot ? 'active' : ''}" onclick="goToReviewDot(${i})"></button>
+                `).join('');
+            }
+
+            // Apply Bangla digit styling to new review text
+            wrapBanglaDigits(track);
+            lucide.createIcons();
+        }
+
+        function goToReviewDot(dotIndex) {
+            const showCount = window.innerWidth < 768 ? 1 : 3;
+            reviewIndex = dotIndex * showCount;
+            renderReviews();
+        }
+
+        function prevReview() {
+            const showCount = window.innerWidth < 768 ? 1 : 3;
+            reviewIndex = Math.max(0, reviewIndex - showCount);
+            renderReviews();
+        }
+
+        function nextReview() {
+            const showCount = window.innerWidth < 768 ? 1 : 3;
+            const maxStart = Math.max(0, reviews.length - showCount);
+            reviewIndex = Math.min(maxStart, reviewIndex + showCount);
+            renderReviews();
+        }
+
+        // =====================================================================
+        // MODAL CLOSE ON OUTSIDE CLICK
+        // =====================================================================
+        window.addEventListener('click', (e) => {
+            const videoModal = document.getElementById('video-modal');
+            const lightbox = document.getElementById('lightbox');
+            if (videoModal && e.target === videoModal) closeVideoModal();
+            if (lightbox && e.target === lightbox) closeLightbox();
+        });
             document.getElementById('top-license').textContent = AGENCY_CONFIG.licenseNo;
             document.getElementById('top-phone').textContent = AGENCY_CONFIG.phoneDisplay;
             document.getElementById('top-whatsapp').textContent = AGENCY_CONFIG.whatsappDisplay;
@@ -607,6 +1296,9 @@
             lucide.createIcons();
             loadPackages();
             loadNewsTicker();
+            loadVideos();
+            loadGallery();
+            loadReviews();
             startHeroSlideshow();
 
             // Mobile menu toggle
@@ -677,6 +1369,7 @@
                     <a href="#home" class="hover:text-emerald-850 transition-colors">হোম</a>
                     <a href="#packages" class="hover:text-emerald-850 transition-colors">হজ ও ওমরাহ প্যাকেজ</a>
                     <a href="#why-us" class="hover:text-emerald-850 transition-colors">কেন আমরাই সেরা</a>
+                    <a href="#media-gallery" class="hover:text-emerald-850 transition-colors">সফরের মুহূর্ত</a>
                     <a href="#process" class="hover:text-emerald-850 transition-colors">প্রয়োজনীয় কাগজপত্র</a>
                     <a href="#reviews" class="hover:text-emerald-850 transition-colors">হাজীদের মতামত</a>
                     <a href="#contact" class="hover:text-emerald-850 transition-colors">যোগাযোগ</a>
@@ -701,6 +1394,7 @@
                 <a href="#home" class="mobile-link block px-3 py-2.5 rounded-lg text-base font-medium text-slate-800 hover:bg-cream-100">হোম</a>
                 <a href="#packages" class="mobile-link block px-3 py-2.5 rounded-lg text-base font-medium text-slate-800 hover:bg-cream-100">হজ ও ওমরাহ প্যাকেজসমূহ</a>
                 <a href="#why-us" class="mobile-link block px-3 py-2.5 rounded-lg text-base font-medium text-slate-800 hover:bg-cream-100">কেন আমাদের মাধ্যমে যাবেন</a>
+                <a href="#media-gallery" class="mobile-link block px-3 py-2.5 rounded-lg text-base font-medium text-slate-800 hover:bg-cream-100">সফরের মুহূর্ত</a>
                 <a href="#process" class="mobile-link block px-3 py-2.5 rounded-lg text-base font-medium text-slate-800 hover:bg-cream-100">প্রয়োজনীয় কাগজপত্র ও নিয়মাবলী</a>
                 <a href="#reviews" class="mobile-link block px-3 py-2.5 rounded-lg text-base font-medium text-slate-800 hover:bg-cream-100">হাজীদের অভিজ্ঞতা</a>
                 <a href="#contact" class="mobile-link block px-3 py-2.5 rounded-lg text-base font-medium text-slate-800 hover:bg-cream-100">অফিসের ঠিকানা ও যোগাযোগ</a>
@@ -930,6 +1624,47 @@
         </div>
     </section>
 
+    <!-- Media Gallery: Video Gallery & Photo Gallery -->
+    <section id="media-gallery" class="py-20 bg-white border-y border-cream-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col lg:flex-row lg:items-end justify-between mb-14 gap-6">
+                <div class="max-w-2xl">
+                    <span class="text-xs font-semibold uppercase tracking-widest text-gold-700">সফরের মুহূর্ত</span>
+                    <h2 class="text-2xl sm:text-4xl font-bold text-emerald-950 mt-2">ভিডিও গাইড ও কাফেলার দৃশ্য</h2>
+                </div>
+                <p class="text-slate-600 text-sm sm:text-base max-w-md">পবিত্র হজ ও ওমরাহ সফরের স্মরণীয় মুহূর্ত ও কাফেলার অভিজ্ঞতা আমাদের ক্যামেরাবন্দী ছবি ও ভিডিওয় দেখুন।</p>
+            </div>
+
+            <!-- Video Gallery -->
+            <div class="mb-16">
+                <h3 class="text-xl font-bold text-emerald-950 mb-6">ভিডিও গাইড ও কাফেলার দৃশ্য</h3>
+                <div class="relative group">
+                    <div id="video-grid" class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <!-- Videos loaded dynamically -->
+                    </div>
+                    <div class="flex justify-between items-center mt-6">
+                        <button id="video-prev" class="media-nav-btn prev" aria-label="পূর্ববর্তী">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+                        </button>
+                        <div class="media-dot-indicators" id="video-dots"></div>
+                        <button id="video-next" class="media-nav-btn next" aria-label="পরবর্তী">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Photo Gallery -->
+            <div class="mb-16">
+                <h3 class="text-xl font-bold text-emerald-950 mb-6">পবিত্র সফর ও কাফেলার কিছু স্থিরচিত্র</h3>
+                <div id="photo-grid" class="media-photo-grid">
+                    <!-- Photos loaded dynamically -->
+                </div>
+                <button id="photo-show-more" class="media-show-more-btn">আরও ছবি দেখুন</button>
+            </div>
+        </div>
+    </section>
+
     <!-- Required Documents & 4-Step Booking Process -->
     <section id="process" class="py-20 sm:py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
@@ -1021,6 +1756,7 @@
     </section>
 
     <!-- Testimonials -->
+    <!-- Dynamic Reviews: হাজীদের অভিজ্ঞতা -->
     <section id="reviews" class="py-20 bg-cream-100/70 border-t border-cream-200">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center max-w-2xl mx-auto mb-14">
@@ -1028,66 +1764,20 @@
                 <h2 class="text-2xl sm:text-4xl font-bold text-emerald-950 mt-2">আমাদের কাফেলায় সফরকারী সম্মানিত হাজীদের মতামত</h2>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-7">
-                <div class="bg-white p-7 rounded-2xl border border-cream-200 flex flex-col justify-between">
-                    <div>
-                        <div class="flex items-center gap-1 text-gold-500 mb-4">
-                            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-                            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-                            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-                            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-                            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-                        </div>
-                        <p class="text-slate-700 text-sm leading-relaxed mb-6">"আলহামদুলিল্লাহ, বাবা-মাকে নিয়ে 14 দিনের স্ট্যান্ডার্ড প্যাকেজে ওমরাহ সম্পন্ন করেছি। হোটেল কাবা শরীফের খুব কাছে হওয়ায় বয়স্ক বাবা-মায়ের নামাজে যেতে কোনো কষ্ট হয়নি। মুয়াল্লিম সাহেব প্রতিটি বিষয়ে খুব যত্ন নিয়ে গাইড করেছেন।"</p>
-                    </div>
-                    <div class="pt-4 border-t border-cream-100 flex items-center justify-between">
-                        <div>
-                            <p class="font-bold text-emerald-950 text-sm">মাহমুদুল হাসান</p>
-                            <p class="text-xs text-slate-500">উত্তরা, ঢাকা</p>
-                        </div>
-                        <span class="text-[11px] font-medium bg-emerald-50 text-emerald-850 px-2.5 py-1 rounded-md">ওমরাহ কাফেলা</span>
-                    </div>
+            <div class="reviews-slider-container mb-8">
+                <div id="reviews-slider-track" class="reviews-slider-track">
+                    <!-- Reviews loaded dynamically -->
                 </div>
+            </div>
 
-                <div class="bg-white p-7 rounded-2xl border border-cream-200 flex flex-col justify-between">
-                    <div>
-                        <div class="flex items-center gap-1 text-gold-500 mb-4">
-                            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-                            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-                            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-                            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-                            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-                        </div>
-                        <p class="text-slate-700 text-sm leading-relaxed mb-6">"তাদের কথার সাথে কাজের শতভাগ মিল পেয়েছি। বুকিংয়ের সময় যে হোটেল ও ফ্লাইটের কথা বলা হয়েছিল ঠিক সেটিই দেওয়া হয়েছে। মক্কা থেকে মদিনায় যাওয়ার এসি বাস এবং জিয়ারাহ ব্যবস্থাও ছিল অত্যন্ত গোছানো।"</p>
-                    </div>
-                    <div class="pt-4 border-t border-cream-100 flex items-center justify-between">
-                        <div>
-                            <p class="font-bold text-emerald-950 text-sm">ডা. ফারহানা ইয়াসমিন</p>
-                            <p class="text-xs text-slate-500">ধানমন্ডি, ঢাকা</p>
-                        </div>
-                        <span class="text-[11px] font-medium bg-emerald-50 text-emerald-850 px-2.5 py-1 rounded-md">ফ্যামিলি প্যাকেজ</span>
-                    </div>
-                </div>
-
-                <div class="bg-white p-7 rounded-2xl border border-cream-200 flex flex-col justify-between">
-                    <div>
-                        <div class="flex items-center gap-1 text-gold-500 mb-4">
-                            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-                            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-                            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-                            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-                            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-                        </div>
-                        <p class="text-slate-700 text-sm leading-relaxed mb-6">"প্রথমবার ওমরাহ করতে গিয়ে অনেক চিন্তায় ছিলাম, কিন্তু ঢাকায় ট্রেনিং করার পর সব ভয় কেটে যায়। মদিনায় মসজিদে নববীর একদম পাশে হোটেল হওয়ায় রওজা শরীফ জিয়ারত ও নামাজ আদায় করা খুব সহজ হয়েছে।"</p>
-                    </div>
-                    <div class="pt-4 border-t border-cream-100 flex items-center justify-between">
-                        <div>
-                            <p class="font-bold text-emerald-950 text-sm">আলহাজ্ব আব্দুর রহমান</p>
-                            <p class="text-xs text-slate-500">কুমিল্লা</p>
-                        </div>
-                        <span class="text-[11px] font-medium bg-emerald-50 text-emerald-850 px-2.5 py-1 rounded-md">হজ ও ওমরাহ</span>
-                    </div>
-                </div>
+            <div class="flex justify-between items-center mb-6">
+                <button id="review-prev" class="media-nav-btn prev" aria-label="পূর্ববর্তী">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+                </button>
+                <div class="media-dot-indicators" id="review-dots"></div>
+                <button id="review-next" class="media-nav-btn next" aria-label="পরবর্তী">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                </button>
             </div>
         </div>
     </section>
@@ -1226,6 +1916,7 @@
                         <li><a href="#packages" class="hover:text-gold-500 transition-colors">ওমরাহ প্যাকেজসমূহ</a></li>
                         <li><a href="#packages" class="hover:text-gold-500 transition-colors">হজ প্যাকেজ</a></li>
                         <li><a href="#why-us" class="hover:text-gold-500 transition-colors">আমাদের সেবাসমূহ</a></li>
+                        <li><a href="#media-gallery" class="hover:text-gold-500 transition-colors">সফরের মুহূর্ত</a></li>
                         <li><a href="#process" class="hover:text-gold-500 transition-colors">প্রয়োজনীয় কাগজপত্র</a></li>
                     </ul>
                 </div>
@@ -1253,6 +1944,29 @@
         <i data-lucide="message-circle" class="w-6 h-6"></i>
         <span class="hidden sm:inline text-sm font-semibold pr-1">হোয়াটসঅ্যাপ</span>
     </button>
+
+    <!-- Video Modal -->
+    <div id="video-modal" class="video-modal">
+        <button class="video-modal-close" onclick="closeVideoModal()" aria-label="বন্ধ করুন">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+        </button>
+        <div class="video-modal-content">
+            <iframe id="video-modal-iframe" src="" allowfullscreen></iframe>
+        </div>
+    </div>
+
+    <!-- Lightbox -->
+    <div id="lightbox" class="lightbox">
+        <button class="lightbox-close" onclick="closeLightbox()" aria-label="বন্ধ করুন">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+        </button>
+        <button class="lightbox-nav prev" onclick="prevLightbox()" aria-label="পূর্ববর্তী ছবি">‹</button>
+        <div class="lightbox-content">
+            <img id="lightbox-img" alt="">
+            <div id="lightbox-caption" class="lightbox-caption"></div>
+        </div>
+        <button class="lightbox-nav next" onclick="nextLightbox()" aria-label="পরবর্তী ছবি">›</button>
+    </div>
 
 </body>
 </html>
