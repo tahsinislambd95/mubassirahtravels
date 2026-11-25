@@ -1,0 +1,1230 @@
+﻿<!DOCTYPE html>
+<html lang="bn" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>মোবাশ্বিরাহ ট্রাভেলস্ এন্ড ট্যুরস | হজ ও ওমরাহ এজেন্সি</title>
+    <meta name="description" content="মোবাশ্বিরাহ ট্রাভেলস্ এন্ড ট্যুরস একটি বিশ্বস্ত হজ ও ওমরাহ এজেন্সি। সুন্নাহ সম্মত ও ঝামেলামুক্ত হজ ও ওমরাহ প্যাকেজ সরাসরি ফ্লাইট, হারাম শরীফের সন্নিকটে হোটেল ও অভিজ্ঞ মুয়াল্লিম গাইডসহ। আজই বুকিং করুন।">
+    <meta property="og:title" content="মোবাশ্বিরাহ ট্রাভেলস্ এন্ড ট্যুরস | হজ ও ওমরাহ এজেন্সি">
+    <meta property="og:description" content="মোবাশ্বিরাহ ট্রাভেলস্ এন্ড ট্যুরস একটি বিশ্বস্ত হজ ও ওমরাহ এজেন্সি। সুন্নাহ সম্মত ও ঝামেলামুক্ত হজ ও ওমরাহ প্যাকেজ সরাসরি ফ্লাইট, হারাম শরীফের সন্নিকটে হোটেল ও অভিজ্ঞ মুয়াল্লিম গাইডসহ।">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="bn_BD">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23064E3B' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 2L14.5 7.5L20 10L14.5 12.5L12 18L9.5 12.5L4 10L9.5 7.5L12 2Z'/%3E%3Cpath d='M5 21H19'/%3E%3Cpath d='M7 21V15C7 13.5 9 12 12 12C15 12 17 13.5 17 15V21'/%3E/svg%3E">
+
+    <!-- Google Fonts: Hind Siliguri, Noto Serif Bengali, Noto Sans Bengali, Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&family=Noto+Sans+Bengali:wght@400;500;600;700&family=Noto+Serif+Bengali:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Custom Tailwind Configuration -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Hind Siliguri"', '"Noto Sans Bengali"', '"Inter"', 'sans-serif'],
+                        serif: ['"Bornomala"', '"Noto Serif Bengali"', '"Hind Siliguri"', 'serif'],
+                        bornomala: ['"Bornomala"', '"Noto Serif Bengali"', '"Hind Siliguri"', 'serif'],
+                    },
+                    colors: {
+                        emerald: {
+                            850: '#064E3B',
+                            900: '#043927',
+                            950: '#02261A',
+                        },
+                        cream: {
+                            50: '#FAF9F6',
+                            100: '#F4F1EA',
+                            200: '#E8E2D5',
+                        },
+                        gold: {
+                            500: '#C5A059',
+                            600: '#B45309',
+                            700: '#92400E',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #FAF9F6;
+            color: #1E293B;
+            line-height: 1.75;
+            font-feature-settings: "kern" 1;
+        }
+        .subtle-pattern {
+            background-image: radial-gradient(#C5A059 0.75px, transparent 0.75px);
+            background-size: 24px 24px;
+        }
+        .card-hover {
+            transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+        }
+        .card-hover:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 14px 30px -10px rgba(6, 78, 59, 0.12);
+            border-color: #C5A059;
+        }
+
+        /* Hero Slideshow Auto-Crossfade — JS-driven smooth opacity transition */
+        .hero-slide {
+            transition: opacity 1100ms ease-in-out;
+        }
+
+        /* News Ticker Marquee */
+        @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        #news-ticker .ticker-wrap:hover {
+            animation-play-state: paused;
+        }
+
+        /* Bangla digit styling - all digits use Bornomala font */
+        .bn-digit {
+            font-family: 'Bornomala', 'Noto Serif Bengali', serif;
+            font-variant-numeric: normal;
+            font-feature-settings: "lnum" 0;
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-emerald-850 selection:text-white">
+
+    <script>
+        const AGENCY_CONFIG = {
+            whatsappNumber: "8801841985309",
+            googleSheetCsvUrl: "",
+            agencyName: "মোবাশ্বিরাহ ট্রাভেলস্ এন্ড ট্যুরস",
+            licenseNo: "1055",
+            phoneDisplay: "+880 1703-225309",
+            whatsappDisplay: "+880 1841-985309",
+            email: "anowar.mubassirah@gmail.com",
+            facebookUrl: "https://www.facebook.com/MubassirahTravelsTours",
+            mapsUrl: "https://www.google.com/maps/place/Mubassirah+Travels+And+Tours/data=!4m2!3m1!1s0x4168b7fd5ba43973:0x6c3a96dfdf26b28e!18m1!1e1?entry=gps&coh=192189&g_ep=CAESBzI2LjQ3LjAYACDXggMqfSwxMDA4NDAwNDUsOTQyMDczOTQsOTQyMDc1MDYsOTQyMDg1MDYsOTQyMTg2NTMsOTQyMjk4MzksMTAwODQ4MDk2LDEwMDgyNTAyNSwxMDA4Mjc5NzUsMTAwODM4MzU5LDEyMTgxNjQ2MSwxMDA4NDU5MzQsMTAwODQ3NDQ1QgJCRA%3D%3D&skid=3a538def-dc30-4b6e-83aa-52f6eb944a11&g_st=ans",
+            packagesSheetCsvUrl: "https://docs.google.com/spreadsheets/d/e/2PACX-1vT6pxyqQa-1wGt2MwcHGgpoiyTkyCsdhQaj37cep9WhLIfrdS2OvCqYB9hqiWceXVpUW9YUcxO8IVw2/pub?gid=0&single=true&output=csv",
+            tickerSheetCsvUrl: "https://docs.google.com/spreadsheets/d/e/2PACX-1vT6pxyqQa-1wGt2MwcHGgpoiyTkyCsdhQaj37cep9WhLIfrdS2OvCqYB9hqiWceXVpUW9YUcxO8IVw2/pub?gid=353493750&single=true&output=csv"
+        };
+
+        // Sample Packages (all digits stored as English; converted to Bangla by wrapBanglaDigits)
+        const SAMPLE_PACKAGES = [
+            {
+                category: "ওমরাহ",
+                badge: "জনপ্রিয় প্যাকেজ",
+                title: "14 দিনের স্ট্যান্ডার্ড ওমরাহ প্যাকেজ",
+                duration: "১৪ দিন (মক্কা ৮ রাত, মদিনা ৫ রাত)",
+                price: "1,65,000",
+                makkahHotel: "3 তারকা মানের হোটেল (ইব্রাহিম খলিল রোড)",
+                makkahDistance: "কাবা শরীফ থেকে 350 মিটার",
+                madinahHotel: "3 তারকা মানের হোটেল (মারকাজিয়া এলাকা)",
+                madinahDistance: "মসজিদে নববী থেকে 200 মিটার",
+                airlines: "সৌদি এয়ারলাইন্স / বিমান বাংলাদেশ (সরাসরি ফ্লাইট)",
+                includes: "ওমরাহ ভিসা, রিটার্ন বিমান টিকিট, হোটেল, এসি বাসে যাতায়াত, জিয়ারাহ ও অভিজ্ঞ মুয়াল্লিম গাইড"
+            },
+            {
+                category: "ওমরাহ",
+                badge: "সাশ্রয়ী প্যাকেজ",
+                title: "14 দিনের ইকোনমি ওমরাহ প্যাকেজ",
+                duration: "১৪ দিন (মক্কা ৮ রাত, মদিনা ৫ রাত)",
+                price: "1,35,000",
+                makkahHotel: "স্ট্যান্ডার্ড হোটেল (মিসফালাহ / শাটল সুবিধা)",
+                makkahDistance: "কাবা শরীফ থেকে 750 মিটার",
+                madinahHotel: "স্ট্যান্ডার্ড হোটেল (সেন্ট্রাল এরিয়া)",
+                madinahDistance: "মসজিদে নববী থেকে 450 মিটার",
+                airlines: "ফ্লাইনাস / সালাম এয়ার / জাজিরা এয়ারওয়েজ",
+                includes: "ওমরাহ ভিসা, রিটার্ন টিকিট, 4 জনের শেয়ারিং রুম, মক্কা-মদিনা ট্রান্সপোর্ট ও জিয়ারাহ"
+            },
+            {
+                category: "ওমরাহ",
+                badge: "প্রিমিয়াম 5-তারকা",
+                title: "21 দিনের ভিআইপি ওমরাহ প্যাকেজ",
+                duration: "২১ দিন (মক্কা ১২ রাত, মদিনা ৮ রাত)",
+                price: "2,25,000",
+                makkahHotel: "5 তারকা হোটেল (ক্লক টাওয়ার / জাবালে ওমর)",
+                makkahDistance: "কাবা শরীফ চত্বর সংলগ্ন (0-100 মিটার)",
+                madinahHotel: "5 তারকা হোটেল (নর্থ মারকাজিয়া)",
+                madinahDistance: "মসজিদে নববী চত্বর সংলগ্ন (100 মিটার)",
+                airlines: "সৌদি এয়ারলাইন্স (সরাসরি ফ্লাইট)",
+                includes: "ভিসা, ডিরেক্ট ফ্লাইট, বুফে ব্রেকফাস্ট, প্রাইভেট জিএমসি/বাস ট্রান্সপোর্ট ও সার্বক্ষণিক গাইড"
+            },
+            {
+                category: "হজ",
+                badge: "আগাম নিবন্ধন চলছে",
+                title: "পূর্ণাঙ্গ হজ প্যাকেজ (সরকারি ও বেসরকারি ব্যবস্থাপনা)",
+                duration: "৩৫ - ৪০ দিন",
+                price: "5,85,000",
+                makkahHotel: "মক্কায় মানসম্মত লিফটযুক্ত হোটেল (আজিজিয়া / হারাম সংলগ্ন)",
+                makkahDistance: "হারাম শরীফ থেকে 500-800 মিটার",
+                madinahHotel: "মদিনায় মারকাজিয়া এলাকার হোটেল",
+                madinahDistance: "মসজিদে নববী থেকে 300 মিটার",
+                airlines: "বিমান বাংলাদেশ / সৌদি এয়ারলাইন্স",
+                includes: "হজ ভিসা, বিমান টিকিট, মিনা-আরাফাহাঁত ও মোয়াল্লেম ফি, 3 বেলা দেশীয় খাবার ও অভিজ্ঞ আলেম গাইড"
+            }
+        ];
+
+        let allPackages = [];
+        let currentFilterKey = 'all';
+
+        // Convert English digits (0-9) to Bangla digits (০-৯)
+        function toBanglaDigits(str) {
+            const banglaDigits = ['০', '১', '২', '৩', '৪', '৫', '৬', '৭', '৮', '৯'];
+            return str.replace(/\d/g, d => banglaDigits[parseInt(d)]);
+        }
+
+        // Wrap Bangla digits in .bn-digit spans for Bornomala styling.
+        // Excludes phone/WhatsApp numbers (always English digits).
+        function wrapBanglaDigits(node) {
+            if (!node || node.nodeType !== Node.ELEMENT_NODE) return;
+            if (node.tagName === 'SCRIPT' || node.tagName === 'STYLE') return;
+            if (node.tagName === 'INPUT' || node.tagName === 'TEXTAREA' || node.tagName === 'SELECT') return;
+
+            const walker = document.createTreeWalker(node, NodeFilter.SHOW_TEXT, null, false);
+            const textNodes = [];
+            let current;
+            while ((current = walker.nextNode()) !== null) {
+                textNodes.push(current);
+            }
+
+            textNodes.forEach(textNode => {
+                const text = textNode.textContent;
+
+                // Skip phone/WhatsApp numbers entirely — keep as plain English digits (0-9)
+                if (/(\+880\s?\d{3}-\d{6}|\+\d{10,})/.test(text)) return;
+
+                // Detect any digit: English (0-9) or Bangla (০-৯)
+                if (!/[\d\u09E6-\u09EF]/.test(text)) return;
+
+                const parent = textNode.parentNode;
+                const fragment = document.createDocumentFragment();
+                let lastIndex = 0;
+
+                const digitRegex = /[\d\u09E6-\u09EF]+/g;
+                let match;
+
+                while ((match = digitRegex.exec(text)) !== null) {
+                    if (match.index > lastIndex) {
+                        fragment.appendChild(document.createTextNode(text.slice(lastIndex, match.index)));
+                    }
+                    const span = document.createElement('span');
+                    span.className = 'bn-digit';
+                    span.textContent = toBanglaDigits(match[0]);
+                    fragment.appendChild(span);
+                    lastIndex = digitRegex.lastIndex;
+                }
+
+                if (lastIndex < text.length) {
+                    fragment.appendChild(document.createTextNode(text.slice(lastIndex)));
+                }
+
+                parent.replaceChild(fragment, textNode);
+            });
+        }
+
+        function parseCSV(csvText) {
+            const rows = [];
+            let currentRow = [];
+            let currentVal = '';
+            let inQuotes = false;
+
+            for (let i = 0; i < csvText.length; i++) {
+                const char = csvText[i];
+                const nextChar = csvText[i + 1];
+
+                if (char === '"' && inQuotes && nextChar === '"') {
+                    currentVal += '"';
+                    i++;
+                } else if (char === '"') {
+                    inQuotes = !inQuotes;
+                } else if (char === ',' && !inQuotes) {
+                    currentRow.push(currentVal.trim());
+                    currentVal = '';
+                } else if ((char === '\r' || char === '\n') && !inQuotes) {
+                    if (char === '\r' && nextChar === '\n') i++;
+                    currentRow.push(currentVal.trim());
+                    if (currentRow.some(cell => cell !== '')) {
+                        rows.push(currentRow);
+                    }
+                    currentRow = [];
+                    currentVal = '';
+                } else {
+                    currentVal += char;
+                }
+            }
+            if (currentVal !== '' || currentRow.length > 0) {
+                currentRow.push(currentVal.trim());
+                if (currentRow.some(cell => cell !== '')) rows.push(currentRow);
+            }
+            return rows;
+        }
+
+        async function loadPackages() {
+            const statusText = document.getElementById('sheet-status-text');
+
+            const sheetUrl = AGENCY_CONFIG.packagesSheetCsvUrl || AGENCY_CONFIG.googleSheetCsvUrl;
+
+            if (sheetUrl && sheetUrl.trim() !== "") {
+                try {
+                    if (statusText) statusText.textContent = "Google Sheet থেকে তথ্য লোড হচ্ছে...";
+                    const response = await fetch(sheetUrl);
+                    const csvData = await response.text();
+                    const rows = parseCSV(csvData);
+
+                    if (rows.length > 1) {
+                        const headers = rows[0];
+                        const parsedPackages = [];
+
+                        for (let i = 1; i < rows.length; i++) {
+                            const row = rows[i];
+                            const getCol = (keywords) => {
+                                const idx = headers.findIndex(h => keywords.some(k => h.includes(k)));
+                                return idx !== -1 && row[idx] ? row[idx] : '';
+                            };
+
+                            const status = getCol(['অবস্থা', 'স্ট্যাটাস', 'Status']);
+                            if (status && (status.includes('বন্ধ') || status.toLowerCase() === 'inactive')) {
+                                continue;
+                            }
+
+                            parsedPackages.push({
+                                category: getCol(['ধরন', 'ক্যাটাগরি', 'Type']) || 'ওমরাহ',
+                                badge: getCol(['ব্যাজ', 'বিশেষত্ব', 'Badge']) || 'চলমান প্যাকেজ',
+                                title: getCol(['প্যাকেজের নাম', 'নাম', 'Title']) || 'ওমরাহ প্যাকেজ',
+                                duration: getCol(['মেয়াদ', 'দিন', 'Duration']) || '১৪ দিন (মক্কা ৮ রাত, মদিনা ৫ রাত)',
+                                price: getCol(['মূল্য', 'টাকা', 'Price']) || 'আলোচনা সাপেক্ষে',
+                                makkahHotel: getCol(['মক্কার হোটেল', 'মক্কা হোটেল']) || 'মানসম্মত হোটেল',
+                                makkahDistance: getCol(['মক্কা দূরত্ব', 'কাবা থেকে দূরত্ব']) || 'হারাম শরীফের সন্নিকটে',
+                                madinahHotel: getCol(['মদিনার হোটেল', 'মদিনা হোটেল']) || 'মানসম্মত হোটেল',
+                                madinahDistance: getCol(['মদিনা দূরত্ব', 'মসজিদে নববী']) || 'মসজিদে নববীর সন্নিকটে',
+                                airlines: getCol(['ফ্লাইট', 'এয়ারলাইন্স']) || 'সরাসরি / ট্রানজিট ফ্লাইট',
+                                includes: getCol(['অন্তর্ভুক্ত', 'সুবিধাসমূহ']) || 'ভিসা, বিমান টিকিট, হোটেল ও জিয়ারাহ'
+                            });
+                        }
+
+                        if (parsedPackages.length > 0) {
+                            allPackages = parsedPackages;
+                            renderPackages();
+                            return;
+                        }
+                    }
+                } catch (error) {
+                    console.error("Google Sheet load error:", error);
+                }
+            }
+
+            allPackages = SAMPLE_PACKAGES;
+            renderPackages();
+        }
+
+        async function loadNewsTicker() {
+            const tickerWrap = document.querySelector('#news-ticker .ticker-wrap');
+            if (!tickerWrap) return;
+
+            const sheetUrl = AGENCY_CONFIG.tickerSheetCsvUrl;
+
+            if (sheetUrl && sheetUrl.trim() !== "") {
+                try {
+                    const response = await fetch(sheetUrl);
+                    const csvData = await response.text();
+                    const rows = parseCSV(csvData);
+
+                    if (rows.length > 1) {
+                        const headers = rows[0];
+                        const newsItems = [];
+
+                        for (let i = 1; i < rows.length; i++) {
+                            const row = rows[i];
+                            const getCol = (keywords) => {
+                                const idx = headers.findIndex(h => keywords.some(k => h.includes(k)));
+                                return idx !== -1 && row[idx] ? row[idx] : '';
+                            };
+
+                            const status = getCol(['অবস্থা', 'স্ট্যাটাস', 'Status']);
+                            if (status && (status.includes('বন্ধ') || status.toLowerCase() === 'inactive')) {
+                                continue;
+                            }
+
+                            const newsText = getCol(['খবর', 'নিউস', 'News', 'শিরোনাম', 'Title']);
+                            if (newsText) {
+                                newsItems.push(newsText);
+                            }
+                        }
+
+                        if (newsItems.length > 0) {
+                            // Build ticker with bullet separators and duplicate for seamless loop
+                            const separator = ' <span class="text-xs font-medium text-emerald-900 mr-6">•</span> ';
+                            const label = '<span class="text-xs font-medium text-emerald-900 mr-6">সর্বশেষ খবর</span>';
+                            const itemsHtml = newsItems.map(item => `<span class="text-sm text-slate-600 mr-3">${item} → </span>`).join(separator);
+                            const fullHtml = label + itemsHtml + separator + label + itemsHtml + separator;
+                            tickerWrap.innerHTML = fullHtml;
+
+                            // Apply Bangla digit styling
+                            wrapBanglaDigits(tickerWrap);
+
+                            // Re-init Lucide icons
+                            lucide.createIcons();
+                            return;
+                        }
+                    }
+                } catch (error) {
+                    console.error("News ticker Google Sheet load error:", error);
+                }
+            }
+
+            // Fallback: keep existing default ticker content (already in HTML)
+            wrapBanglaDigits(tickerWrap);
+            lucide.createIcons();
+        }
+
+        function filterPackages(filterKey) {
+            currentFilterKey = filterKey;
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                if (btn.dataset.filter === filterKey) {
+                    btn.classList.add('bg-emerald-850', 'text-white', 'shadow-sm');
+                    btn.classList.remove('text-slate-700');
+                } else {
+                    btn.classList.remove('bg-emerald-850', 'text-white', 'shadow-sm');
+                    btn.classList.add('text-slate-700');
+                }
+            });
+            renderPackages();
+        }
+
+        function renderPackages() {
+            const grid = document.getElementById('packages-grid');
+
+            const filterLabel = currentFilterKey === 'all'
+                ? "সব প্যাকেজ"
+                : currentFilterKey === 'umrah'
+                ? "ওমরাহ প্যাকেজ"
+                : "হজ প্যাকেজ";
+
+            const filtered = currentFilterKey === 'all'
+                ? allPackages
+                : allPackages.filter(pkg => pkg.category === filterLabel || pkg.category === currentFilterKey);
+
+            grid.innerHTML = filtered.map(pkg => {
+                const includedItems = pkg.includes.split(',').map(item => item.trim()).filter(Boolean);
+                const safeTitle = pkg.title.replace(/'/g, "\\'");
+                const safePrice = pkg.price.replace(/'/g, "\\'");
+
+                return `
+                <article class="bg-white rounded-2xl border border-cream-200 p-6 sm:p-8 flex flex-col justify-between card-hover">
+                    <div>
+                        <div class="flex flex-wrap items-center justify-between gap-2 mb-4">
+                            <span class="inline-flex items-center gap-1.5 text-xs font-semibold px-3 py-1 rounded-full bg-emerald-50 text-emerald-850 border border-emerald-200/60">
+                                ${pkg.badge}
+                            </span>
+                            <span class="inline-flex items-center gap-1.5 text-xs font-medium text-slate-600 bg-cream-100 px-3 py-1 rounded-full">
+                                <i data-lucide="calendar" class="w-3.5 h-3.5 text-gold-700"></i>
+                                ${pkg.duration}
+                            </span>
+                        </div>
+
+                        <h3 class="text-xl sm:text-2xl font-bold text-emerald-950 leading-snug mb-3">${pkg.title}</h3>
+
+                        <div class="flex items-baseline gap-2 pb-5 mb-5 border-b border-cream-200">
+                            <span class="text-2xl sm:text-3xl font-bold text-gold-700">৳ ${pkg.price}</span>
+                            <span class="text-xs text-slate-500">/ ব্যক্তি (রুম শেয়ারিং ভিত্তিক)</span>
+                        </div>
+
+                        <div class="space-y-3.5 mb-6 text-sm">
+                            <div class="flex items-start gap-3">
+                                <div class="w-8 h-8 rounded-lg bg-cream-100 text-emerald-850 flex items-center justify-center shrink-0 mt-0.5">
+                                    <i data-lucide="building" class="w-4 h-4"></i>
+                                </div>
+                                <div>
+                                    <p class="font-semibold text-slate-800">মক্কা:</p>
+                                    <p class="text-xs text-emerald-850 font-medium">${pkg.makkahHotel}</p>
+                                    <p class="text-xs text-emerald-850 font-medium">${pkg.makkahDistance}</p>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start gap-3">
+                                <div class="w-8 h-8 rounded-lg bg-cream-100 text-emerald-850 flex items-center justify-center shrink-0 mt-0.5">
+                                    <i data-lucide="building-2" class="w-4 h-4"></i>
+                                </div>
+                                <div>
+                                    <p class="font-semibold text-slate-800">মদিনা:</p>
+                                    <p class="text-xs text-emerald-850 font-medium">${pkg.madinahHotel}</p>
+                                    <p class="text-xs text-emerald-850 font-medium">${pkg.madinahDistance}</p>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start gap-3">
+                                <div class="w-8 h-8 rounded-lg bg-cream-100 text-emerald-850 flex items-center justify-center shrink-0 mt-0.5">
+                                    <i data-lucide="plane" class="w-4 h-4"></i>
+                                </div>
+                                <div>
+                                    <p class="font-semibold text-slate-800">এয়ারলাইন্স</p>
+                                    <p class="text-xs text-slate-600">${pkg.airlines}</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-cream-50 rounded-xl p-4 mb-6 border border-cream-200/70">
+                            <p class="text-xs font-bold text-slate-700 uppercase tracking-wider mb-2.5">অন্তর্ভুক্ত বিষয়সমূহ:</p>
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                                ${includedItems.map(item => `
+                                    <div class="flex items-center gap-2 text-xs text-slate-700">
+                                        <i data-lucide="check" class="w-3.5 h-3.5 text-emerald-850 shrink-0"></i>
+                                        <span>${item}</span>
+                                    </div>
+                                `).join('')}
+                            </div>
+                        </div>
+                    </div>
+
+                    <button onclick="bookPackageWhatsApp('${safeTitle}', '${safePrice}')" class="w-full inline-flex items-center justify-center gap-2 bg-emerald-850 hover:bg-emerald-900 text-white font-semibold py-3.5 px-6 rounded-xl transition-colors text-sm">
+                        হোয়াটসঅ্যাপে বুকিং বা বিস্তারিত
+                    </button>
+                </article>
+                `;
+            }).join('');
+
+            lucide.createIcons();
+            wrapBanglaDigits(grid);
+        }
+
+        function openWhatsAppUrl(message) {
+            const encoded = encodeURIComponent(message);
+            const url = `https://wa.me/${AGENCY_CONFIG.whatsappNumber}?text=${encoded}`;
+            window.open(url, '_blank', 'noopener,noreferrer');
+        }
+
+        function openWhatsAppGeneral() {
+            openWhatsAppUrl(`আসসালামু আলাইকুম ${AGENCY_CONFIG.agencyName}, আমি হজ/ওমরাহ প্যাকেজ সম্পর্কে বিস্তারিত জানতে চাই।`);
+        }
+
+        function openWhatsAppCustom(topic) {
+            openWhatsAppUrl(`আসসালামু আলাইকুম, আমি "${topic}" বিষয়ে আপনাদের সাথে কথা বলতে চাই।`);
+        }
+
+        function bookPackageWhatsApp(packageName, price) {
+            const msg = `আসসালামু আলাইকুম ${AGENCY_CONFIG.agencyName},\nআমি আপনাদের ওয়েবসাইটে "${packageName}" (মূল্য: ৳${price}) দেখেছি। এই প্যাকেজটির পরবর্তী ফ্লাইটের তারিখ ও বুকিং প্রক্রিয়া সম্পর্কে জানতে চাই।`;
+            openWhatsAppUrl(msg);
+        }
+
+        function submitInquiryToWhatsApp(event) {
+            event.preventDefault();
+            const name = document.getElementById('client-name').value.trim();
+            const phone = document.getElementById('client-phone').value.trim();
+            const pkg = document.getElementById('client-package').value;
+            const persons = document.getElementById('client-persons').value.trim() || 'উল্লেখ করা হয়নি';
+            const note = document.getElementById('client-note').value.trim() || 'নেই';
+
+            const message = `আসসালামু আলাইকুম ${AGENCY_CONFIG.agencyName},\nওয়েবসাইট থেকে নতুন অনুসন্ধান:\n• নাম: ${name}\n• মোবাইল: ${phone}\n• আগ্রহী প্যাকেজ: ${pkg}\n• যাত্রী সংখ্যা: ${persons}\n• বিশেষ নোট: ${note}`;
+            openWhatsAppUrl(message);
+        }
+
+        function toggleSetupModal() {
+            const modal = document.getElementById('setup-modal');
+            modal.classList.toggle('hidden');
+        }
+
+        // =====================================================================
+        // HERO SLIDESHOW — JS-driven smooth crossfade
+        // =====================================================================
+        let currentHeroSlide = 0;
+        const HERO_INTERVAL = 4500;
+
+        function getHeroSlides() {
+            return document.querySelectorAll('.hero-slide');
+        }
+
+        function nextHeroSlide() {
+            const slides = getHeroSlides();
+            if (slides.length === 0) return;
+            const prev = slides[currentHeroSlide];
+            currentHeroSlide = (currentHeroSlide + 1) % slides.length;
+            const next = slides[currentHeroSlide];
+
+            prev.classList.remove('opacity-100');
+            prev.classList.add('opacity-0');
+            next.classList.remove('opacity-0');
+            next.classList.add('opacity-100');
+        }
+
+        function startHeroSlideshow() {
+            setInterval(nextHeroSlide, HERO_INTERVAL);
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            document.getElementById('top-license').textContent = AGENCY_CONFIG.licenseNo;
+            document.getElementById('top-phone').textContent = AGENCY_CONFIG.phoneDisplay;
+            document.getElementById('top-whatsapp').textContent = AGENCY_CONFIG.whatsappDisplay;
+
+            // Re-apply digit wrapping for any text set after DOMContentLoaded
+            wrapBanglaDigits(document.body);
+
+            lucide.createIcons();
+            loadPackages();
+            loadNewsTicker();
+            startHeroSlideshow();
+        });
+    </script>
+
+    <!-- Top Trust Bar -->
+    <div class="bg-emerald-950 text-cream-100 text-xs sm:text-sm py-2.5 border-b border-emerald-800/60">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row justify-between items-center gap-2">
+            <div class="flex flex-wrap items-center justify-center sm:justify-start gap-x-4 gap-y-1">
+                <span class="inline-flex items-center gap-1.5 text-gold-500 font-medium bornomala">
+                    <i data-lucide="shield-check" class="w-4 h-4"></i>
+                    ধর্ম বিষয়ক মন্ত্রণালয় অনুমোদিত হজ লাইসেন্স নং: <strong class="text-white" id="top-license">1055</strong>
+                </span>
+                <span class="hidden md:inline text-emerald-700">|</span>
+                <span class="hidden md:inline text-cream-200/90 bornomala">ATAB ও HAAB নিবন্ধিত সদস্য</span>
+            </div>
+            <div class="flex items-center gap-4">
+                <a href="tel:+8801703225309" class="inline-flex items-center gap-1.5 hover:text-gold-500 transition-colors">
+                    <i data-lucide="phone" class="w-3.5 h-3.5 text-gold-500 shrink-0"></i>
+                    <span id="top-phone">+880 1703-225309</span>
+                </a>
+                <span class="text-emerald-700 shrink-0">|</span>
+                <a href="https://wa.me/8801841985309" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 hover:text-gold-500 transition-colors hidden sm:inline-flex">
+                    <i data-lucide="message-circle" class="w-3.5 h-3.5 text-gold-500 shrink-0"></i>
+                    <span id="top-whatsapp">+880 1841-985309</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sticky Main Navigation -->
+    <header class="sticky top-0 z-40 bg-cream-50/95 backdrop-blur-md border-b border-cream-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Brand Logo -->
+                <a href="#home" class="flex items-center gap-3 group">
+                    <img
+                        src="mubassirah-logo.png"
+                        alt="মোবাশ্বিরাহ ট্রাভেলস্ এন্ড ট্যুরস"
+                        class="h-12 sm:h-14 w-auto max-w-[180px] object-contain"
+                        onerror="this.onerror=null; this.style.display='none';"
+                    />
+                    <div>
+                        <span class="block text-xl sm:text-2xl font-bold text-emerald-950 leading-tight tracking-tight">মোবাশ্বিরাহ</span>
+                        <span class="block text-xs sm:text-sm font-semibold text-gold-700 tracking-wide">ট্রাভেলস্ এন্ড ট্যুরস</span>
+                    </div>
+                </a>
+
+                <!-- Desktop Navigation Links -->
+                <nav class="hidden lg:flex items-center gap-8 text-[15px] font-medium font-bornomala text-slate-700">
+                    <a href="#home" class="hover:text-emerald-850 transition-colors">হোম</a>
+                    <a href="#packages" class="hover:text-emerald-850 transition-colors">হজ ও ওমরাহ প্যাকেজ</a>
+                    <a href="#why-us" class="hover:text-emerald-850 transition-colors">কেন আমরাই সেরা</a>
+                    <a href="#process" class="hover:text-emerald-850 transition-colors">প্রয়োজনীয় কাগজপত্র</a>
+                    <a href="#reviews" class="hover:text-emerald-850 transition-colors">হাজীদের মতামত</a>
+                    <a href="#contact" class="hover:text-emerald-850 transition-colors">যোগাযোগ</a>
+                </nav>
+
+                <!-- Primary CTA & Mobile Menu -->
+                <div class="flex items-center gap-2">
+                    <button onclick="openWhatsAppGeneral()" class="inline-flex items-center gap-2 bg-emerald-850 hover:bg-emerald-900 text-white text-sm font-medium px-4 sm:px-5 py-2.5 rounded-xl shadow-sm transition-all">
+                        <i data-lucide="message-circle" class="w-4 h-4 text-gold-500"></i>
+                        <span class="hidden sm:inline">হোয়াটসঅ্যাপ পরামর্শ</span>
+                        <span class="sm:hidden">যোগাযোগ</span>
+                    </button>
+
+                    <button id="mobile-menu-btn" aria-label="মেনু খুলুন" class="lg:hidden p-2.5 rounded-xl border border-cream-200 text-slate-700 hover:bg-cream-100">
+                        <i data-lucide="menu" class="w-5 h-5"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Mobile Navigation Drawer -->
+            <div id="mobile-menu" class="hidden lg:hidden bg-cream-50 border-t border-cream-200 px-4 pt-3 pb-6 space-y-2 font-bornomala">
+                <a href="#home" class="mobile-link block px-3 py-2.5 rounded-lg text-base font-medium text-slate-800 hover:bg-cream-100">হোম</a>
+                <a href="#packages" class="mobile-link block px-3 py-2.5 rounded-lg text-base font-medium text-slate-800 hover:bg-cream-100">হজ ও ওমরাহ প্যাকেজসমূহ</a>
+                <a href="#why-us" class="mobile-link block px-3 py-2.5 rounded-lg text-base font-medium text-slate-800 hover:bg-cream-100">কেন আমাদের মাধ্যমে যাবেন</a>
+                <a href="#process" class="mobile-link block px-3 py-2.5 rounded-lg text-base font-medium text-slate-800 hover:bg-cream-100">প্রয়োজনীয় কাগজপত্র ও নিয়মাবলী</a>
+                <a href="#reviews" class="mobile-link block px-3 py-2.5 rounded-lg text-base font-medium text-slate-800 hover:bg-cream-100">হাজীদের অভিজ্ঞতা</a>
+                <a href="#contact" class="mobile-link block px-3 py-2.5 rounded-lg text-base font-medium text-slate-800 hover:bg-cream-100">অফিসের ঠিকানা ও যোগাযোগ</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="relative bg-emerald-950 text-white overflow-hidden">
+        <!-- Hero Auto-Slideshow Background -->
+        <div class="absolute inset-0 z-0">
+            <div class="hero-slides absolute inset-0 w-full h-full overflow-hidden">
+                <div class="hero-slide absolute inset-0 w-full h-full opacity-100 transition-opacity duration-1000 ease-in-out">
+                    <img
+                        src="Kaaba.jpg"
+                        alt="পবিত্র মসজিদুল হারাম ও কাবা শরীফ"
+                        onerror="this.onerror=null; this.src='https://placehold.co/1920x900/043927/C5A059?text=Masjid+al-Haram'"
+                        class="w-full h-full object-cover object-center"
+                    >
+                </div>
+                <div class="hero-slide absolute inset-0 w-full h-full opacity-0 transition-opacity duration-1000 ease-in-out">
+                    <img
+                        src="Madina.jpg"
+                        alt="মসজিদে নববী ও গাম্বুজ, মদিনা"
+                        onerror="this.onerror=null; this.src='https://placehold.co/1920x900/043927/C5A059?text=Masjid+an-Nabawi'"
+                        class="w-full h-full object-cover object-center"
+                    >
+                </div>
+                <div class="hero-slide absolute inset-0 w-full h-full opacity-0 transition-opacity duration-1000 ease-in-out">
+                    <img
+                        src="Arafa.jpg"
+                        alt="আরাফাত ময়দান, হাজীর পবিত্র স্থল"
+                        onerror="this.onerror=null; this.src='https://placehold.co/1920x900/043927/C5A059?text=Mount+Arafat'"
+                        class="w-full h-full object-cover object-center"
+                    >
+                </div>
+                <div class="hero-slide absolute inset-0 w-full h-full opacity-0 transition-opacity duration-1000 ease-in-out">
+                    <img
+                        src="Stone.jpg"
+                        alt="মিনা ও জামরাত, হাজী ক্যাম্প"
+                        onerror="this.onerror=null; this.src='https://placehold.co/1920x900/043927/C5A059?text=Mina+Muzdalifah'"
+                        class="w-full h-full object-cover object-center"
+                    >
+                </div>
+            </div>
+            <!-- Directional Gradient Overlay: strongest at bottom (text area), fading to transparent at top -->
+            <div class="absolute inset-0 z-10 bg-gradient-to-t from-emerald-950 via-emerald-950/60 to-transparent/0 pointer-events-none"></div>
+        </div>
+
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 sm:py-28 lg:py-32">
+            <div class="max-w-3xl">
+                <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-900/80 border border-gold-500/40 text-gold-500 text-xs sm:text-sm font-medium mb-6">
+                    <i data-lucide="award" class="w-4 h-4"></i>
+                    সুন্নাহ সম্মত ও ঝামেলামুক্ত হজ ও ওমরাহ ব্যবস্থাপনা
+                </div>
+
+                <h1 class="text-3xl sm:text-5xl lg:text-[54px] font-bold text-white leading-[1.25] tracking-tight mb-6">
+                    পবিত্র হজ ও ওমরাহ পালনে আপনার <span class="text-gold-500">বিশ্বস্ত ও নির্ভরযোগ্য</span> সঙ্গী
+                </h1>
+
+                <p class="text-base sm:text-lg text-cream-200/90 leading-relaxed mb-9 max-w-2xl font-normal">
+                    অভিজ্ঞ আলেম ও মুয়াল্লিমের সার্বক্ষণিক দিকনির্দেশনা, হারাম শরীফের একদম সন্নিকটে মানসম্মত হোটেল এবং সরাসরি ফ্লাইটের নিশ্চয়তায় আমরা আপনার পবিত্র সফরকে করি প্রশান্তিময় ও নিরাপদ।
+                </p>
+
+                <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
+                    <a href="#packages" class="inline-flex items-center justify-center gap-2 bg-gold-500 hover:bg-amber-600 text-emerald-950 font-bold px-7 py-4 rounded-xl shadow-lg transition-all text-base">
+                        <span>চলমান প্যাকেজসমূহ দেখুন</span>
+                        <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                    </a>
+                    <button onclick="openWhatsAppGeneral()" class="inline-flex items-center justify-center gap-2.5 bg-white/10 hover:bg-white/15 backdrop-blur-sm border border-white/25 text-white font-medium px-7 py-4 rounded-xl transition-all text-base">
+                        <i data-lucide="phone-call" class="w-5 h-5 text-gold-500"></i>
+                        <span>সরাসরি পরামর্শ নিন</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trust Metrics Strip -->
+    <section class="relative z-20 -mt-8 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="bg-white rounded-2xl shadow-md border border-cream-200 p-6 sm:p-8 grid grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
+            <div class="flex items-start gap-3.5">
+                <div class="w-11 h-11 rounded-xl bg-emerald-50 text-emerald-850 flex items-center justify-center shrink-0">
+                    <i data-lucide="landmark" class="w-5 h-5"></i>
+                </div>
+                <div>
+                    <p class="text-xl sm:text-2xl font-bold text-emerald-950 leading-tight">18+ বছর</p>
+                    <p class="text-xs sm:text-sm text-slate-600 mt-0.5">সফল হজ ও ওমরাহ সেবা</p>
+                </div>
+            </div>
+            <div class="flex items-start gap-3.5">
+                <div class="w-11 h-11 rounded-xl bg-emerald-50 text-emerald-850 flex items-center justify-center shrink-0">
+                    <i data-lucide="users" class="w-5 h-5"></i>
+                </div>
+                <div>
+                    <p class="text-xl sm:text-2xl font-bold text-emerald-950 leading-tight">5,200+</p>
+                    <p class="text-xs sm:text-sm text-slate-600 mt-0.5">সন্তুষ্ট হাজী ও ওমরাহ যাত্রী</p>
+                </div>
+            </div>
+            <div class="flex items-start gap-3.5">
+                <div class="w-11 h-11 rounded-xl bg-emerald-50 text-emerald-850 flex items-center justify-center shrink-0">
+                    <i data-lucide="building-2" class="w-5 h-5"></i>
+                </div>
+                <div>
+                    <p class="text-xl sm:text-2xl font-bold text-emerald-950 leading-tight">0-400 মিটার</p>
+                    <p class="text-xs sm:text-sm text-slate-600 mt-0.5">হারাম শরীফ থেকে হোটেল দূরত্ব</p>
+                </div>
+            </div>
+            <div class="flex items-start gap-3.5">
+                <div class="w-11 h-11 rounded-xl bg-emerald-50 text-emerald-850 flex items-center justify-center shrink-0">
+                    <i data-lucide="user-check" class="w-5 h-5"></i>
+                </div>
+                <div>
+                    <p class="text-xl sm:text-2xl font-bold text-emerald-950 leading-tight">24/7 গাইড</p>
+                    <p class="text-xs sm:text-sm text-slate-600 mt-0.5">অভিজ্ঞ বাংলাদেশি মুয়াল্লিম</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Dynamic Packages Section -->
+    <section id="packages" class="py-20 sm:py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <!-- Latest News Ticker: above packages heading -->
+        <div id="news-ticker" class="relative overflow-hidden mb-10 border border-cream-200 bg-cream-50 rounded-xl">
+            <div class="ticker-wrap flex items-center py-3 px-4 whitespace-nowrap animate-[marquee_20s_linear_infinite]">
+                <span class="text-xs font-medium text-emerald-900 mr-6">সর্বশেষ খবর</span>
+                <span class="text-sm text-slate-600 mr-3">আগামী রমজান ওমরাহ রেজিস্ট্রেশন শুরু হয়েছে → </span>
+                <span class="text-xs font-medium text-emerald-900 mr-6">•</span>
+                <span class="text-sm text-slate-600 mr-3">সৌদি এয়ারলাইন্স সরাসরি ফ্লাইট বুকিং চালু হচ্ছে → </span>
+                <span class="text-xs font-medium text-emerald-900 mr-6">•</span>
+                <span class="text-sm text-slate-600 mr-3">হজ ভিসা আবেদনের শেষ তারিখ ঘোষণা করা হয়েছে → </span>
+                <span class="text-xs font-medium text-emerald-900 mr-6">•</span>
+                <span class="text-sm text-slate-600 mr-3">মদিনায় 5-তারকা হোটেলের নতুন প্যাকেজ উপলব্ধ → </span>
+                <span class="text-xs font-medium text-emerald-900 mr-6">•</span>
+                <span class="text-sm text-slate-600 mr-3">পূর্ণাঙ্গ হজ প্যাকেজের আসন সীমিত → </span>
+                <span class="text-xs font-medium text-emerald-900 mr-6">•</span>
+                <!-- Duplicate for seamless loop -->
+                <span class="text-xs font-medium text-emerald-900 mr-6">সর্বশেষ খবর</span>
+                <span class="text-sm text-slate-600 mr-3">আগামী রমজান ওমরাহ রেজিস্ট্রেশন শুরু হয়েছে → </span>
+                <span class="text-xs font-medium text-emerald-900 mr-6">•</span>
+                <span class="text-sm text-slate-600 mr-3">সৌদি এয়ারলাইন্স সরাসরি ফ্লাইট বুকিং চালু হচ্ছে → </span>
+                <span class="text-xs font-medium text-emerald-900 mr-6">•</span>
+                <span class="text-sm text-slate-600 mr-3">হজ ভিসা আবেদনের শেষ তারিখ ঘোষণা করা হয়েছে → </span>
+                <span class="text-xs font-medium text-emerald-900 mr-6">•</span>
+                <span class="text-sm text-slate-600 mr-3">মদিনায় 5-তারকা হোটেলের নতুন প্যাকেজ উপলব্ধ → </span>
+                <span class="text-xs font-medium text-emerald-900 mr-6">•</span>
+                <span class="text-sm text-slate-600 mr-3">পূর্ণাঙ্গ হজ প্যাকেজের আসন সীমিত → </span>
+                <span class="text-xs font-medium text-emerald-900 mr-6">•</span>
+            </div>
+        </div>
+
+        <div class="text-center max-w-2xl mx-auto mb-12">
+            <span class="text-xs font-semibold uppercase tracking-widest text-gold-700 bg-amber-50 px-3 py-1 rounded-full border border-amber-200/70">আমাদের প্যাকেজসমূহ</span>
+            <h2 class="text-2xl sm:text-4xl font-bold text-emerald-950 mt-3 mb-4">আপনার বাজেট ও পছন্দ অনুযায়ী হজ ও ওমরাহ প্যাকেজ</h2>
+            <p class="text-slate-600 text-sm sm:text-base">প্রতিটি প্যাকেজে ভিসা, বিমান টিকিট, মক্কা-মদিনায় হোটেল, যাতায়াত এবং অভিজ্ঞ আলেম দ্বারা পরিচালিত জিয়ারাহ অন্তর্ভুক্ত।</p>
+        </div>
+
+        <!-- Category Filter Tabs -->
+        <div class="flex flex-col sm:flex-row justify-between items-center gap-4 mb-10">
+            <div class="inline-flex p-1.5 bg-cream-100 rounded-xl border border-cream-200" role="tablist">
+                <button onclick="filterPackages('all')" data-filter="all" class="filter-btn active px-5 py-2 rounded-lg text-sm font-semibold bg-emerald-850 text-white shadow-sm transition-all">সব প্যাকেজ</button>
+                <button onclick="filterPackages('umrah')" data-filter="umrah" class="filter-btn px-5 py-2 rounded-lg text-sm font-semibold text-slate-700 hover:text-emerald-950 transition-all">ওমরাহ প্যাকেজ</button>
+                <button onclick="filterPackages('hajj')" data-filter="hajj" class="filter-btn px-5 py-2 rounded-lg text-sm font-semibold text-slate-700 hover:text-emerald-950 transition-all">হজ প্যাকেজ</button>
+            </div>
+        </div>
+
+        <div id="packages-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
+            <!-- Dynamically populated by JavaScript -->
+        </div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section id="why-us" class="py-20 bg-cream-100/70 border-y border-cream-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col lg:flex-row lg:items-end justify-between mb-14 gap-6">
+                <div class="max-w-2xl">
+                    <span class="text-xs font-semibold uppercase tracking-widest text-gold-700">আমাদের বিশেষত্ব</span>
+                    <h2 class="text-2xl sm:text-4xl font-bold text-emerald-950 mt-2">কেন হাজারো হাজী আমাদের ওপর আস্থা রাখেন?</h2>
+                </div>
+                <p class="text-slate-600 text-sm sm:text-base max-w-md">হজ ও ওমরাহ কেবল একটি ভ্রমণ নয়, এটি জীবনের শ্রেষ্ঠ ইবাদত। তাই আমরা প্রতিটি পদক্ষেপে স্বচ্ছতা ও সর্বোচ্চ সেবার মান বজায় রাখি।</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+                <div class="bg-white p-7 rounded-2xl border border-cream-200 card-hover">
+                    <div class="w-12 h-12 rounded-xl bg-emerald-50 text-emerald-850 flex items-center justify-center mb-5">
+                        <i data-lucide="plane" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-emerald-950 mb-2.5">সরাসরি ফ্লাইট সুবিধা</h3>
+                    <p class="text-sm text-slate-600 leading-relaxed">বয়স্ক হাজীদের কষ্ট লাঘব করতে আমরা সৌদি এয়ারলাইন্স এবং বিমান বাংলাদেশ এয়ারলাইন্সের সরাসরি (Direct) ফ্লাইট নিশ্চিত করি।</p>
+                </div>
+                <div class="bg-white p-7 rounded-2xl border border-cream-200 card-hover">
+                    <div class="w-12 h-12 rounded-xl bg-emerald-50 text-emerald-850 flex items-center justify-center mb-5">
+                        <i data-lucide="map-pin" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-emerald-950 mb-2.5">হারাম শরীফের সন্নিকটে হোটেল</h3>
+                    <p class="text-sm text-slate-600 leading-relaxed">পাঁচ ওয়াক্ত নামাজ জামাতের সাথে আদায়ের সুবিধার্থে মক্কায় কাবা শরীফ ও মদিনায় মসজিদে নববীর হাঁটা দূরত্বের ভেতর মানসম্মত হোটেল।</p>
+                </div>
+                <div class="bg-white p-7 rounded-2xl border border-cream-200 card-hover">
+                    <div class="w-12 h-12 rounded-xl bg-emerald-50 text-emerald-850 flex items-center justify-center mb-5">
+                        <i data-lucide="book-open-check" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-emerald-950 mb-2.5">অভিজ্ঞ আলেম ও মুয়াল্লিম</h3>
+                    <p class="text-sm text-slate-600 leading-relaxed">সহীহ সুন্নাহ অনুযায়ী তাওয়াফ, সাঈ ও হজের আহকাম পালনের জন্য প্রতিটি কাফেলার সাথে সার্বক্ষণিক অভিজ্ঞ বাংলাদেশি আলেম থাকেন।</p>
+                </div>
+                <div class="bg-white p-7 rounded-2xl border border-cream-200 card-hover">
+                    <div class="w-12 h-12 rounded-xl bg-emerald-50 text-emerald-850 flex items-center justify-center mb-5">
+                        <i data-lucide="presentation" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-emerald-950 mb-2.5">প্রাক-সফর প্রশিক্ষণ কর্মশালা</h3>
+                    <p class="text-sm text-slate-600 leading-relaxed">যাত্রার পূর্বে ঢাকায় আমাদের নিজস্ব অডিটোরিয়ামে ইহরাম বাঁধা ও ওমরাহর নিয়মাবলীর ওপর ব্যবহারিক প্রশিক্ষণ ও বই প্রদান করা হয়।</p>
+                </div>
+                <div class="bg-white p-7 rounded-2xl border border-cream-200 card-hover">
+                    <div class="w-12 h-12 rounded-xl bg-emerald-50 text-emerald-850 flex items-center justify-center mb-5">
+                        <i data-lucide="compass" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-emerald-950 mb-2.5">ঐতিহাসিক স্থানসমূহে জিয়ারাহ</h3>
+                    <p class="text-sm text-slate-600 leading-relaxed">মক্কায় জাবালে নূর, জাবালে সাওর, মিনা-আরাফাহ এবং মদিনায় মসজিদে কুবা, ওহুদ প্রান্তরসহ গুরুত্বপূর্ণ ঐতিহাসিক স্থানসমূহ পরিদর্শন।</p>
+                </div>
+                <div class="bg-white p-7 rounded-2xl border border-cream-200 card-hover">
+                    <div class="w-12 h-12 rounded-xl bg-emerald-50 text-emerald-850 flex items-center justify-center mb-5">
+                        <i data-lucide="file-check-2" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-emerald-950 mb-2.5">স্বচ্ছ চুক্তি ও কোনো লুকানো চার্জ নেই</h3>
+                    <p class="text-sm text-slate-600 leading-relaxed">বুকিংয়ের সময় লিখিত চুক্তিপত্রে প্যাকেজের সকল সুবিধা স্পষ্টভাবে উল্লেখ থাকে। পরবর্তীতে কোনো অতিরিক্ত চার্জ দাবি করা হয় না।</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Required Documents & 4-Step Booking Process -->
+    <section id="process" class="py-20 sm:py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+            <div class="lg:col-span-7">
+                <span class="text-xs font-semibold uppercase tracking-widest text-gold-700">সহজ বুকিং পদ্ধতি</span>
+                <h2 class="text-2xl sm:text-3xl font-bold text-emerald-950 mt-2 mb-8">মাত্র 4 সহজ ধাপে আপনার ওমরাহ বুকিং সম্পন্ন করুন</h2>
+
+                <div class="space-y-6">
+                    <div class="flex gap-4 bg-white p-5 rounded-2xl border border-cream-200">
+                        <div class="w-10 h-10 rounded-full bg-emerald-850 text-white font-bold flex items-center justify-center shrink-0">1</div>
+                        <div>
+                            <h3 class="font-bold text-emerald-950 text-base">প্যাকেজ নির্বাচন ও পরামর্শ</h3>
+                            <p class="text-sm text-slate-600 mt-1">আমাদের প্যাকেজগুলো দেখে আপনার সুবিধাজনক তারিখ ও বাজেট অনুযায়ী হোয়াটসঅ্যাপে বা সরাসরি অফিসে এসে কথা বলুন।</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-4 bg-white p-5 rounded-2xl border border-cream-200">
+                        <div class="w-10 h-10 rounded-full bg-emerald-850 text-white font-bold flex items-center justify-center shrink-0">2</div>
+                        <div>
+                            <h3 class="font-bold text-emerald-950 text-base">পাসপোর্ট ও ডকুমেন্টস জমাদান</h3>
+                            <p class="text-sm text-slate-600 mt-1">ভিসা প্রসেসিং এবং বিমান টিকিট বুকিংয়ের জন্য মূল পাসপোর্ট ও প্রয়োজনীয় কাগজপত্র জমা দিয়ে বুকিং নিশ্চিত করুন।</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-4 bg-white p-5 rounded-2xl border border-cream-200">
+                        <div class="w-10 h-10 rounded-full bg-emerald-850 text-white font-bold flex items-center justify-center shrink-0">3</div>
+                        <div>
+                            <h3 class="font-bold text-emerald-950 text-base">ভিসা, টিকিট ও প্রশিক্ষণ গ্রহণ</h3>
+                            <p class="text-sm text-slate-600 mt-1">5-7 কর্মদিবসের মধ্যে ভিসা ও টিকিট বুঝে নিন এবং আমাদের প্রাক-ওমরাহ প্রশিক্ষণ কর্মশালায় অংশগ্রহণ করুন।</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-4 bg-white p-5 rounded-2xl border border-cream-200">
+                        <div class="w-10 h-10 rounded-full bg-gold-500 text-emerald-950 font-bold flex items-center justify-center shrink-0">4</div>
+                        <div>
+                            <h3 class="font-bold text-emerald-950 text-base">পবিত্র মক্কা ও মদিনার উদ্দেশ্যে যাত্রা</h3>
+                            <p class="text-sm text-slate-600 mt-1">আমাদের অভিজ্ঞ মুয়াল্লিম ও টিমের তত্ত্বাবধানে নিশ্চিন্তে পবিত্র ওমরাহ ও জিয়ারাহ সম্পন্ন করুন।</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="lg:col-span-5">
+                <div class="bg-emerald-950 text-white rounded-2xl p-7 sm:p-8 shadow-lg border border-emerald-800 relative overflow-hidden">
+                    <div class="relative z-10">
+                        <div class="inline-flex items-center gap-2 text-gold-500 text-xs font-semibold uppercase tracking-wider mb-3">
+                            <i data-lucide="folder-check" class="w-4 h-4"></i>
+                            ডকুমেন্টস চেকলিস্ট
+                        </div>
+                        <h3 class="text-xl sm:text-2xl font-bold mb-2">ওমরাহ ভিসার জন্য প্রয়োজনীয় কাগজপত্র</h3>
+                        <p class="text-sm text-cream-200/80 mb-6">বর্তমান সৌদি নিয়ম অনুযায়ী নিচের কাগজপত্রগুলো থাকলেই ওমরাহ ভিসা সম্পন্ন করা যায়:</p>
+
+                        <ul class="space-y-4 text-sm">
+                            <li class="flex items-start gap-3 bg-emerald-900/70 p-3.5 rounded-xl border border-emerald-800">
+                                <i data-lucide="check-circle-2" class="w-5 h-5 text-gold-500 shrink-0 mt-0.5"></i>
+                                <div>
+                                    <strong class="block text-white">মূল পাসপোর্ট (MRP / e-Passport)</strong>
+                                    <span class="text-cream-200/75 text-xs">ভ্রমণের তারিখ থেকে ন্যূনতম 6 মাস মেয়াদ থাকতে হবে।</span>
+                                </div>
+                            </li>
+                            <li class="flex items-start gap-3 bg-emerald-900/70 p-3.5 rounded-xl border border-emerald-800">
+                                <i data-lucide="check-circle-2" class="w-5 h-5 text-gold-500 shrink-0 mt-0.5"></i>
+                                <div>
+                                    <strong class="block text-white">পাসপোর্ট সাইজ রঙিন ছবি (2 কপি)</strong>
+                                    <span class="text-cream-200/75 text-xs">সাদা ব্যাকগ্রাউন্ডের ল্যাব প্রিন্ট ছবি।</span>
+                                </div>
+                            </li>
+                            <li class="flex items-start gap-3 bg-emerald-900/70 p-3.5 rounded-xl border border-emerald-800">
+                                <i data-lucide="check-circle-2" class="w-5 h-5 text-gold-500 shrink-0 mt-0.5"></i>
+                                <div>
+                                    <strong class="block text-white">জাতীয় পরিচয়পত্র (NID) বা জন্ম নিবন্ধন</strong>
+                                    <span class="text-cream-200/75 text-xs">শিশুদের ক্ষেত্রে ইংরেজি জন্ম নিবন্ধন সনদের কপি।</span>
+                                </div>
+                            </li>
+                            <li class="flex items-start gap-3 bg-emerald-900/70 p-3.5 rounded-xl border border-emerald-800">
+                                <i data-lucide="check-circle-2" class="w-5 h-5 text-gold-500 shrink-0 mt-0.5"></i>
+                                <div>
+                                    <strong class="block text-white">মোবাইল নম্বর ও জরুরি যোগাযোগ</strong>
+                                    <span class="text-cream-200/75 text-xs">হাজীর সচল মোবাইল নম্বর ও পরিবারের একজনের নম্বর।</span>
+                                </div>
+                            </li>
+                        </ul>
+
+                        <div class="mt-7 pt-6 border-t border-emerald-800/80">
+                            <p class="text-xs text-cream-200/75 mb-3">পাসপোর্ট না থাকলে বা নবায়ন করতে চাইলে আমরা প্রয়োজনীয় পরামর্শ দিয়ে থাকি।</p>
+                            <button onclick="openWhatsAppCustom('ওমরাহ ভিসার কাগজপত্র সম্পর্কে জানতে চাই')" class="w-full bg-gold-500 hover:bg-amber-600 text-emerald-950 font-bold py-3 rounded-xl text-sm transition-colors">ডকুমেন্টস যাচাই করতে মেসেজ দিন</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section id="reviews" class="py-20 bg-cream-100/70 border-t border-cream-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-14">
+                <span class="text-xs font-semibold uppercase tracking-widest text-gold-700">হাজীদের অভিজ্ঞতা</span>
+                <h2 class="text-2xl sm:text-4xl font-bold text-emerald-950 mt-2">আমাদের কাফেলায় সফরকারী সম্মানিত হাজীদের মতামত</h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-7">
+                <div class="bg-white p-7 rounded-2xl border border-cream-200 flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center gap-1 text-gold-500 mb-4">
+                            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        </div>
+                        <p class="text-slate-700 text-sm leading-relaxed mb-6">"আলহামদুলিল্লাহ, বাবা-মাকে নিয়ে 14 দিনের স্ট্যান্ডার্ড প্যাকেজে ওমরাহ সম্পন্ন করেছি। হোটেল কাবা শরীফের খুব কাছে হওয়ায় বয়স্ক বাবা-মায়ের নামাজে যেতে কোনো কষ্ট হয়নি। মুয়াল্লিম সাহেব প্রতিটি বিষয়ে খুব যত্ন নিয়ে গাইড করেছেন।"</p>
+                    </div>
+                    <div class="pt-4 border-t border-cream-100 flex items-center justify-between">
+                        <div>
+                            <p class="font-bold text-emerald-950 text-sm">মাহমুদুল হাসান</p>
+                            <p class="text-xs text-slate-500">উত্তরা, ঢাকা</p>
+                        </div>
+                        <span class="text-[11px] font-medium bg-emerald-50 text-emerald-850 px-2.5 py-1 rounded-md">ওমরাহ কাফেলা</span>
+                    </div>
+                </div>
+
+                <div class="bg-white p-7 rounded-2xl border border-cream-200 flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center gap-1 text-gold-500 mb-4">
+                            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        </div>
+                        <p class="text-slate-700 text-sm leading-relaxed mb-6">"তাদের কথার সাথে কাজের শতভাগ মিল পেয়েছি। বুকিংয়ের সময় যে হোটেল ও ফ্লাইটের কথা বলা হয়েছিল ঠিক সেটিই দেওয়া হয়েছে। মক্কা থেকে মদিনায় যাওয়ার এসি বাস এবং জিয়ারাহ ব্যবস্থাও ছিল অত্যন্ত গোছানো।"</p>
+                    </div>
+                    <div class="pt-4 border-t border-cream-100 flex items-center justify-between">
+                        <div>
+                            <p class="font-bold text-emerald-950 text-sm">ডা. ফারহানা ইয়াসমিন</p>
+                            <p class="text-xs text-slate-500">ধানমন্ডি, ঢাকা</p>
+                        </div>
+                        <span class="text-[11px] font-medium bg-emerald-50 text-emerald-850 px-2.5 py-1 rounded-md">ফ্যামিলি প্যাকেজ</span>
+                    </div>
+                </div>
+
+                <div class="bg-white p-7 rounded-2xl border border-cream-200 flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center gap-1 text-gold-500 mb-4">
+                            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        </div>
+                        <p class="text-slate-700 text-sm leading-relaxed mb-6">"প্রথমবার ওমরাহ করতে গিয়ে অনেক চিন্তায় ছিলাম, কিন্তু ঢাকায় ট্রেনিং করার পর সব ভয় কেটে যায়। মদিনায় মসজিদে নববীর একদম পাশে হোটেল হওয়ায় রওজা শরীফ জিয়ারত ও নামাজ আদায় করা খুব সহজ হয়েছে।"</p>
+                    </div>
+                    <div class="pt-4 border-t border-cream-100 flex items-center justify-between">
+                        <div>
+                            <p class="font-bold text-emerald-950 text-sm">আলহাজ্ব আব্দুর রহমান</p>
+                            <p class="text-xs text-slate-500">কুমিল্লা</p>
+                        </div>
+                        <span class="text-[11px] font-medium bg-emerald-50 text-emerald-850 px-2.5 py-1 rounded-md">হজ ও ওমরাহ</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 sm:py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="bg-white rounded-3xl border border-cream-200 shadow-sm overflow-hidden grid grid-cols-1 lg:grid-cols-12">
+            <div class="lg:col-span-5 bg-emerald-900 text-white p-8 sm:p-10 flex flex-col justify-between">
+                <div>
+                    <span class="text-xs font-semibold uppercase tracking-widest text-gold-500">সরাসরি যোগাযোগ</span>
+                    <h2 class="text-2xl sm:text-3xl font-bold mt-2 mb-4">আমাদের অফিসে আসুন অথবা ফোনে কথা বলুন</h2>
+                    <p class="text-sm text-cream-200/85 mb-8">হজ ও ওমরাহ সংক্রান্ত যেকোনো তথ্যের জন্য আমাদের অভিজ্ঞ কাউন্সেলরদের সাথে সরাসরি কথা বলতে পারেন।</p>
+
+                    <div class="space-y-5 text-sm">
+                        <div class="flex items-start gap-3.5">
+                            <div class="w-10 h-10 rounded-xl bg-emerald-800 text-gold-500 flex items-center justify-center shrink-0">
+                                <i data-lucide="map-pin" class="w-5 h-5"></i>
+                            </div>
+                            <div>
+                                <p class="font-semibold text-white">প্রধান কার্যালয় (ঢাকা)</p>
+                                <a href="https://www.google.com/maps/place/Mubassirah+Travels+And+Tours/data=!4m2!3m1!1s0x4168b7fd5ba43973:0x6c3a96dfdf26b28e!18m1!1e1?entry=gps&coh=192189&g_ep=CAESBzI2LjQ3LjAYACDXggMqfSwxMDA4NDAwNDUsOTQyMDczOTQsOTQyMDc1MDYsOTQyMDg1MDYsOTQyMTg2NTMsOTQyMjk4MzksMTAwODQ4MDk2LDEwMDgyNTAyNSwxMDA4Mjc5NzUsMTAwODM4MzU5LDEyMTgxNjQ2MSwxMDA4NDU5MzQsMTAwODQ3NDQ1QgJCRA%3D%3D&skid=3a538def-dc30-4b6e-83aa-52f6eb944a11&g_st=ans" target="_blank" rel="noopener noreferrer" class="text-cream-200/80 mt-0.5 hover:text-gold-500 transition-colors text-sm leading-relaxed inline-block">
+                                    ৫৫/১, ইসলাম এস্টেট টাওয়ার (৭ম তলা), পুরানা পল্টন, ঢাকা-১০০০, বাংলাদেশ
+                                    <i data-lucide="external-link" class="w-3.5 h-3.5 inline-block ml-1 align-baseline text-cream-200/80"></i>
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-3.5">
+                            <div class="w-10 h-10 rounded-xl bg-emerald-800 text-gold-500 flex items-center justify-center shrink-0">
+                                <i data-lucide="phone" class="w-5 h-5 shrink-0"></i>
+                            </div>
+                            <div>
+                                <p class="font-semibold text-white">হটলাইন ও হোয়াটসঅ্যাপ</p>
+                                <a href="tel:+8801703225309" class="text-cream-200/80 hover:text-gold-500 transition-colors">হটলাইন: +880 1703-225309</a><br>
+                                <a href="https://wa.me/8801841985309" target="_blank" rel="noopener noreferrer" class="text-cream-200/80 hover:text-gold-500 transition-colors">হোয়াটসঅ্যাপ: +880 1841-985309</a>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-3.5">
+                            <div class="w-10 h-10 rounded-xl bg-emerald-800 text-gold-500 flex items-center justify-center shrink-0">
+                                <i data-lucide="mail" class="w-5 h-5"></i>
+                            </div>
+                            <div>
+                                <p class="font-semibold text-white">ইমেইল</p>
+                                <a href="mailto:anowar.mubassirah@gmail.com" class="text-cream-200/80 hover:text-gold-500 transition-colors">anowar.mubassirah@gmail.com</a>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-3.5">
+                            <div class="w-10 h-10 rounded-xl bg-emerald-800 text-gold-500 flex items-center justify-center shrink-0">
+<svg class="w-5 h-5 text-gold-500 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>                            </div>
+                            <div>
+                                <p class="font-semibold text-white">ফেসবুক পেইজ</p>
+                                <a href="https://www.facebook.com/MubassirahTravelsTours" target="_blank" rel="noopener noreferrer" class="text-cream-200/80 mt-0.5 hover:text-gold-500 transition-colors text-sm">Mubassirah Travels & Tours</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-10 pt-6 border-t border-emerald-800 text-xs text-cream-200/75">
+                    <p>ধর্ম বিষয়ক মন্ত্রণালয় অনুমোদিত হজ লাইসেন্স নং: <strong class="text-gold-500">1055</strong></p>
+                </div>
+            </div>
+
+            <div class="lg:col-span-7 p-8 sm:p-10">
+                <h3 class="text-xl sm:text-2xl font-bold text-emerald-950 mb-2">বিনামূল্যে পরামর্শের জন্য তথ্য দিন</h3>
+                <p class="text-sm text-slate-600 mb-6">নিচের ফর্মটি পূরণ করে সাবমিট করলে সরাসরি আমাদের হোয়াটসঅ্যাপে আপনার বার্তাটি চলে যাবে।</p>
+
+                <form id="inquiry-form" onsubmit="submitInquiryToWhatsApp(event)" class="space-y-5">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                        <div>
+                            <label for="client-name" class="block text-sm font-semibold text-slate-700 mb-1.5">আপনার নাম *</label>
+                            <input type="text" id="client-name" required placeholder="যেমন: আবদুল্লাহ আল মামুন" class="w-full px-4 py-3 rounded-xl border border-cream-200 bg-cream-50/50 focus:bg-white focus:outline-none focus:border-emerald-850 text-sm">
+                        </div>
+                        <div>
+                            <label for="client-phone" class="block text-sm font-semibold text-slate-700 mb-1.5">মোবাইল নম্বর *</label>
+                            <input type="tel" id="client-phone" required placeholder="যেমন: 017XXXXXXXX" class="w-full px-4 py-3 rounded-xl border border-cream-200 bg-cream-50/50 focus:bg-white focus:outline-none focus:border-emerald-850 text-sm">
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                        <div>
+                            <label for="client-package" class="block text-sm font-semibold text-slate-700 mb-1.5">কোন প্যাকেজে আগ্রহী?</label>
+                            <select id="client-package" class="w-full px-4 py-3 rounded-xl border border-cream-200 bg-cream-50/50 focus:bg-white focus:outline-none focus:border-emerald-850 text-sm">
+                                <option value="ইকোনমি ওমরাহ প্যাকেজ">ইকোনমি ওমরাহ প্যাকেজ</option>
+                                <option value="স্ট্যান্ডার্ড ওমরাহ প্যাকেজ" selected>স্ট্যান্ডার্ড ওমরাহ প্যাকেজ</option>
+                                <option value="ভিআইপি ওমরাহ প্যাকেজ">ভিআইপি ওমরাহ প্যাকেজ</option>
+                                <option value="পূর্ণাঙ্গ হজ প্যাকেজ">পূর্ণাঙ্গ হজ প্যাকেজ</option>
+                                <option value="ফ্যামিলি কাস্টম প্যাকেজ">ফ্যামিলি কাস্টম প্যাকেজ</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="client-persons" class="block text-sm font-semibold text-slate-700 mb-1.5">যাত্রী সংখ্যা</label>
+                            <input type="text" id="client-persons" placeholder="যেমন: 2 জন প্রাপ্তবয়স্ক" class="w-full px-4 py-3 rounded-xl border border-cream-200 bg-cream-50/50 focus:bg-white focus:outline-none focus:border-emerald-850 text-sm">
+                        </div>
+                    </div>
+
+                    <div>
+                        <label for="client-note" class="block text-sm font-semibold text-slate-700 mb-1.5">সম্ভাব্য যাত্রার মাস বা বিশেষ প্রশ্ন (ঐচ্ছিক)</label>
+                        <textarea id="client-note" rows="3" placeholder="যেমন: আগামী রমজান মাসে পরিবারসহ ওমরাহ করতে চাই..." class="w-full px-4 py-3 rounded-xl border border-cream-200 bg-cream-50/50 focus:bg-white focus:outline-none focus:border-emerald-850 text-sm"></textarea>
+                    </div>
+
+                    <button type="submit" class="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 bg-emerald-850 hover:bg-emerald-900 text-white font-semibold px-8 py-3.5 rounded-xl shadow-sm transition-all text-sm">
+                        <i data-lucide="send" class="w-4 h-4 text-gold-500"></i>
+                        হোয়াটসঅ্যাপে বার্তা পাঠান
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-emerald-950 text-cream-200/80 pt-16 pb-10 border-t border-emerald-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 pb-12 border-b border-emerald-900">
+                <div class="lg:col-span-2">
+                    <div class="flex items-center gap-3 mb-4">
+                        <img
+                            src="mubassirah-logo.png"
+                            alt="মোবাশ্বিরাহ ট্রাভেলস্ এন্ড ট্যুরস"
+                            class="h-12 sm:h-14 w-auto max-w-[180px] object-contain"
+                            onerror="this.onerror=null; this.style.display='none';"
+                        />
+                        <div>
+                            <span class="block text-lg sm:text-xl font-bold text-white">মোবাশ্বিরাহ</span>
+                            <span class="block text-xs sm:text-sm font-semibold text-gold-500">ট্রাভেলস্ এন্ড ট্যুরস</span>
+                            <span class="block text-xs text-gold-500">বিশ্বস্ততা ও সুন্নাহর পথে আপনার সফরসঙ্গী</span>
+                        </div>
+                    </div>
+                    <p class="text-sm text-cream-200/75 max-w-md leading-relaxed">ধর্ম বিষয়ক মন্ত্রণালয় অনুমোদিত একটি বিশ্বস্ত হজ ও ওমরাহ এজেন্সি। 18 বছরেরও বেশি সময় ধরে আমরা নিষ্ঠা ও আন্তরিকতার সাথে আল্লাহর মেহমানদের খেদমত করে আসছি।</p>
+                </div>
+
+                <div>
+                    <h4 class="text-white font-bold text-base mb-4">গুরুত্বপূর্ণ লিংক</h4>
+                    <ul class="space-y-2.5 text-sm">
+                        <li><a href="#packages" class="hover:text-gold-500 transition-colors">ওমরাহ প্যাকেজসমূহ</a></li>
+                        <li><a href="#packages" class="hover:text-gold-500 transition-colors">হজ প্যাকেজ</a></li>
+                        <li><a href="#why-us" class="hover:text-gold-500 transition-colors">আমাদের সেবাসমূহ</a></li>
+                        <li><a href="#process" class="hover:text-gold-500 transition-colors">প্রয়োজনীয় কাগজপত্র</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-white font-bold text-base mb-4">অনুমোদন ও নিবন্ধন</h4>
+                    <ul class="space-y-2 text-sm text-cream-200/75">
+                        <li>• হজ লাইসেন্স নং: <span class="text-white font-medium">1055</span></li>
+                        <li>• ATAB সদস্য নং: <span class="text-white font-medium">3492</span></li>
+                        <li>• HAAB সদস্য নং: <span class="text-white font-medium">1108</span></li>
+                        <li>• বেসামরিক বিমান পরিবহন মন্ত্রণালয় অনুমোদিত</span></li>
+                        <li><a href="https://www.facebook.com/MubassirahTravelsTours" target="_blank" rel="noopener noreferrer" class="hover:text-gold-500 transition-colors">ফেসবুক পেইজ: Mubassirah Travels & Tours</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="pt-8 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs text-cream-200/60">
+                <p>© 2026 মোবাশ্বিরাহ ট্রাভেলস্ এন্ড ট্যুরস। সর্বস্বত্ব সংরক্ষিত।</p>
+
+                <button onclick="toggleSetupModal()" class="inline-flex items-center gap-1.5 text-cream-200/60 hover:text-gold-500 transition-colors">
+                    <i data-lucide="settings" class="w-3.5 h-3.5"></i>
+                    Google Sheet সেটআপ গাইড
+                </button>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating WhatsApp Button -->
+    <button onclick="openWhatsAppGeneral()" aria-label="হোয়াটসঅ্যাপে কথা বলুন" class="fixed bottom-6 right-6 z-40 bg-[#128C7E] hover:bg-[#075E54] text-white p-4 rounded-full shadow-xl flex items-center gap-2.5 transition-transform hover:scale-105">
+        <i data-lucide="message-circle" class="w-6 h-6"></i>
+        <span class="hidden sm:inline text-sm font-semibold pr-1">হোয়াটসঅ্যাপ</span>
+    </button>
+
+    <!-- Admin Setup Guide Modal -->
+    <div id="setup-modal" class="hidden fixed inset-0 z-50 bg-slate-900/70 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="bg-white rounded-2xl max-w-lg w-full p-6 sm:p-8 shadow-2xl border border-cream-200 relative">
+            <button onclick="toggleSetupModal()" class="absolute top-5 right-5 text-slate-400 hover:text-slate-700">
+                <i data-lucide="x" class="w-5 h-5"></i>
+            </button>
+            <div class="inline-flex items-center gap-2 text-emerald-850 bg-emerald-50 px-3 py-1 rounded-full text-xs font-semibold mb-3">
+                <i data-lucide="database" class="w-3.5 h-3.5"></i>
+                এজেন্সি অ্যাডমিন গাইড
+            </div>
+            <h3 class="text-xl font-bold text-emerald-950 mb-3">Google Sheets থেকে প্যাকেজ ও খবর আপডেট করার নিয়ম</h3>
+            <ol class="space-y-3 text-sm text-slate-600 list-decimal list-inside leading-relaxed">
+                <li><strong>প্যাকেজ শিট:</strong> আপনার Google Sheet-এ প্যাকেজের নাম, মেয়াদ, মূল্য, হোটেল ইত্যাদি তথ্য বাংলা হেডিং অনুযায়ী লিখুন।</li>
+                <li>শিটের উপরে <strong>File &gt; Share &gt; Publish to web</strong> অপশনে যান।</li>
+                <li><strong>Web page</strong>-এর বদলে <strong>Comma-separated values (.csv)</strong> সিলেক্ট করে <strong>Publish</strong> বাটনে ক্লিক করুন এবং লিংকটি কপি করুন।</li>
+                <li>এই HTML ফাইলে <code class="bg-cream-100 px-1.5 py-0.5 rounded text-emerald-900">packagesSheetCsvUrl: ""</code> বা <code class="bg-cream-100 px-1.5 py-0.5 rounded text-emerald-900">googleSheetCsvUrl: ""</code> এর ভেতর প্যাকেজ শিটের লিংকটি পেস্ট করুন।</li>
+                <li><strong>খবর টিক্কার শিট:</strong> অন্য একটি Google Sheet-এ খবর/শিরোনাম এবং অবস্থা (বন্ধ/সক্রিয়) কলাম রাখুন এবং একইভাবে Publish to web হিসেবে CSV লিংক নিন।</li>
+                <li>তার লিংকটি <code class="bg-cream-100 px-1.5 py-0.5 rounded text-emerald-900">tickerSheetCsvUrl: ""</code> এর ভেতর পেস্ট করুন। লিংক setzte দিলেই খবর টিক্কার অটো-আপডেট হবে।</li>
+                <li>সব লিংক সেভ করার পর পেজ রিফ্রেশ করুন—শিট থেকে সরাসরি ডাটা দেখাবে।</li>
+            </ol>
+            <div class="mt-6 flex justify-end">
+                <button onclick="toggleSetupModal()" class="bg-emerald-850 text-white px-5 py-2.5 rounded-xl text-sm font-semibold">বুঝেছি</button>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
