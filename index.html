@@ -132,7 +132,7 @@
         const SAMPLE_PACKAGES = [
             {
                 category: "ওমরাহ",
-                badge: "জনপ্রিয় প্যাকেজ",
+                badge: "ওমরাহ্‌ প্যাকেজ জনপ্রিয়",
                 title: "14 দিনের স্ট্যান্ডার্ড ওমরাহ প্যাকেজ",
                 duration: "১৪ দিন (মক্কা ৮ রাত, মদিনা ৫ রাত)",
                 price: "1,65,000",
@@ -145,7 +145,7 @@
             },
             {
                 category: "ওমরাহ",
-                badge: "সাশ্রয়ী প্যাকেজ",
+                badge: "ওমরাহ প্যাকেজ সাশ্রয়ী",
                 title: "14 দিনের ইকোনমি ওমরাহ প্যাকেজ",
                 duration: "১৪ দিন (মক্কা ৮ রাত, মদিনা ৫ রাত)",
                 price: "1,35,000",
@@ -158,7 +158,7 @@
             },
             {
                 category: "ওমরাহ",
-                badge: "প্রিমিয়াম 5-তারকা",
+                badge: "ওমরাহ প্রিমিয়াম 5-তারকা",
                 title: "21 দিনের ভিআইপি ওমরাহ প্যাকেজ",
                 duration: "২১ দিন (মক্কা ১২ রাত, মদিনা ৮ রাত)",
                 price: "2,25,000",
@@ -171,7 +171,7 @@
             },
             {
                 category: "হজ",
-                badge: "আগাম নিবন্ধন চলছে",
+                badge: "হজ আগাম নিবন্ধন চলছে",
                 title: "পূর্ণাঙ্গ হজ প্যাকেজ (সরকারি ও বেসরকারি ব্যবস্থাপনা)",
                 duration: "৩৫ - ৪০ দিন",
                 price: "5,85,000",
@@ -397,6 +397,38 @@
             lucide.createIcons();
         }
 
+// Normalize Bangla/Unicode text for safe comparison (removes zero-width chars, collapses whitespace)
+        function normalizeText(text) {
+            if (!text) return '';
+            return String(text)
+                .replace(/[\u200c\u200d\u200b]/g, '')
+                .replace(/\s+/g, ' ')
+                .trim();
+        }
+
+        function isUmrahText(text) {
+            const t = normalizeText(text).toLowerCase();
+            return t.includes('ওমরাহ') || t.includes('omrah') || t.includes('umrah');
+        }
+
+        function isHajjText(text) {
+            const t = normalizeText(text).toLowerCase();
+            return t.includes('হজ') || t.includes('হজ্জ') || t.includes('hajj');
+        }
+
+        function matchesFilter(pkg, filterKey) {
+            if (filterKey === 'all') return true;
+            const badgeText = normalizeText(pkg.badge || '');
+            const categoryText = normalizeText(pkg.category || '');
+            if (filterKey === 'umrah') {
+                return isUmrahText(badgeText) || isUmrahText(categoryText);
+            }
+            if (filterKey === 'hajj') {
+                return isHajjText(badgeText) || isHajjText(categoryText);
+            }
+            return true;
+        }
+
         function filterPackages(filterKey) {
             currentFilterKey = filterKey;
             document.querySelectorAll('.filter-btn').forEach(btn => {
@@ -422,7 +454,7 @@
 
             const filtered = currentFilterKey === 'all'
                 ? allPackages
-                : allPackages.filter(pkg => pkg.category === filterLabel || pkg.category === currentFilterKey);
+                : allPackages.filter(pkg => matchesFilter(pkg, currentFilterKey));
 
             grid.innerHTML = filtered.map(pkg => {
                 const includedItems = pkg.includes.split(',').map(item => item.trim()).filter(Boolean);
