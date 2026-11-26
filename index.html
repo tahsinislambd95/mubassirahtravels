@@ -206,9 +206,6 @@
         @media (min-width: 768px) {
             .media-photo-grid { grid-template-columns: repeat(3, 1fr); }
         }
-        @media (min-width: 1024px) {
-            .media-photo-grid { grid-template-columns: repeat(4, 1fr); }
-        }
         .media-photo-card {
             flex-direction: column;
             border-radius: 10px;
@@ -1350,10 +1347,10 @@ const visible = [];
                         }
 
                         if (newsItems.length > 0) {
-                            const separator = ' <span class="text-xs font-medium text-emerald-900 mr-6">•</span> ';
-                            const label = '<span class="text-xs font-medium text-emerald-900 mr-6">সর্বশেষ খবর</span>';
-                            const itemsHtml = newsItems.map(item => `<span class="text-sm text-slate-600 mr-3">${esc(item)} → </span>`).join(separator);
-                            const fullHtml = label + itemsHtml + separator + label + itemsHtml + separator;
+                            const dot = ' <span class="inline-flex items-center justify-center text-sm font-bold text-emerald-900 mx-5">•</span> ';
+                            const label = '<span class="text-xs font-semibold text-emerald-900 mr-4 px-2.5 py-0.5 rounded bg-emerald-100/80">সর্বশেষ খবর</span>';
+                            const itemsHtml = newsItems.map(item => `<span class="text-sm text-slate-700">${esc(item)}</span>${dot}`).join('');
+                            const fullHtml = label + itemsHtml + label + itemsHtml;
                             tickerWrap.innerHTML = fullHtml;
 
                             wrapBanglaDigits(tickerWrap);
